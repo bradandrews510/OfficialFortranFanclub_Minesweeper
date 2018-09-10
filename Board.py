@@ -5,41 +5,42 @@ Testing out Doxygen
 # Imports
 
 # GameBoard class
-#class GameBoard()
+class GameBoard()
 
     # Initialize a game board
-    def __init__(self):
-
-        # Ask the user for the board dimensions
-        self.set_dimensions()
-
-        # Ask the user for the number of mines
-        self.set_num_of_mines()
+    def __init__(self, width, height, numOfMines):
+        self.generate_board()
+        self.generate_mines()
 
     '''
         FUNCTIONS TO SET OR GET BOARD PROPERTIES
     '''
 
     # Get dimensions
-    # TODO: Add input error checking
+
     def set_dimensions(self):
-        """ Trying to write comments that work with Doxygen
+        """ @pre    The dimensions passed are valid
+            @post   An
+            @return None
         """
         print("In set_dimensions")
-
-    # Set the number of mines
-    # TODO: Add input error checking
-    def set_num_of_mines(self):
-        print("In set_num_of_mines")
 
     # Generate the board
     # TODO: Create an mxn array containing all of the game cells
     def generate_board(self):
+        """ @pre    None
+            @post   Generates the game board...
+            @return None
+        """
         print("In generate_board")
 
 
     # Find and mark all the of the empty cells adjacent to a mine
     def mark_adjacent(self):
+        """ @pre    None
+            @post   None
+            @return None
+        """
         print("In mark_adjacent")
 
 
@@ -53,9 +54,12 @@ Testing out Doxygen
 
     # Place mines
     def place_mines(self):
+        """ @pre    The number of mines n is valid
+            @post   Populates the game board with n mines
+            @return None
+        """
         print("In place_mines")
 
     # Print the board
-    # The function prints each row individually
     def print_board(self):
         print("In print_board")
