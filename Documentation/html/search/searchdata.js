@@ -1,21 +1,24 @@
 var indexSectionsWithContent =
 {
-  0: "bs",
-  1: "b",
-  2: "s"
+  0: "_bgmps",
+  1: "gm",
+  2: "b",
+  3: "_gmps"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "namespaces",
-  2: "functions"
+  1: "classes",
+  2: "namespaces",
+  3: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Namespaces",
-  2: "Functions"
+  1: "Classes",
+  2: "Namespaces",
+  3: "Functions"
 };
 
