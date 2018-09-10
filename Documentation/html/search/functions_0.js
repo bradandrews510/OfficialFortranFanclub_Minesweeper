@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['set_5fdimensions',['set_dimensions',['../namespace_board.html#ab67f816560ee2b4c90117d8d4e0507b5',1,'Board']]]
+  ['_5f_5finit_5f_5f',['__init__',['../classsweeper___u_i_1_1ms__buttons.html#a3d2640672406cad7e5dd9a4e6042c62b',1,'sweeper_UI::ms_buttons']]]
 ];
