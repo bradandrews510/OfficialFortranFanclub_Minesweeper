@@ -67,9 +67,45 @@ class GameBoard:
         MISC. FUNCTIONS
     '''
 
-    # Traverse the board
-    def traverse_board(self):
-        print("In traverse_board")
+    # Return a dictionary with the accessible directions for some specific cell
+    def get_acces_by_cell(self, i, j):
+        accessibleDirections = {'U' : False, 'U_L' : False, 'U_R' : False,
+                      'D' : False, 'D_L' : False, 'D_R' : False,
+                      'L' : False, 'R'   : False}
+
+        # Up
+        if ((i - 1) >= 0):
+            accessibleDirections['U'] = self.board[i-1][j]
+
+        # Up Left
+        if ((i - 1) >= 0) and ((j - 1) >= 0):
+            accessibleDirections['U_L'] = self.board[i-1][j-1]
+
+        # Up Right
+        if ((i - 1) >= 0) and ((j + 1) < self.size):
+            accessibleDirections['U_R'] = self.board[i-1][j+1]
+
+        # Down
+        if (i + 1) < self.size:
+            accessibleDirections['D'] = self.board[i+1][j]
+
+        # Down Left
+        if ((i + 1) < self.size) and ((j - 1) >= 0):
+            accessibleDirections['D_L'] = self.board[i+1][j-1]
+
+        # Down Right
+        if ((i + 1) < self.size) and ((j + 1) < self.size):
+            accessibleDirections['D_R'] = self.board[i+1][j+1]
+
+        # Left
+        if (j - 1) >= 0:
+            accessibleDirections['L'] = self.board[i][j-1]
+
+        # Right
+        if (j + 1) < self.size:
+            accessibleDirections['R'] = self.board[i][j+1]
+
+        return(accessibleDirections)
 
     # Place mines
     def place_mines(self):
