@@ -1,23 +1,23 @@
 """@package docstring
-Testing out Doxygen
+   Game Board... this file or the class needs to be renamed
 """
 
 # Imports
 
 # GameBoard class
-class GameBoard()
+class GameBoard:
 
     # Initialize a game board
-    def __init__(self, height, width, numOfMines):
+    def __init__(self, width, height, numOfMines):
 
         # Store the height, width, and number of mines
-        self.height = height
         self.width  = width
+        self.height = height
         self.numOfMines = numOfMines
 
         # Go through the process of generating the board
         self.generate_board()
-        self.generate_mines()
+        self.place_mines()
 
     '''
         FUNCTIONS TO SET OR GET BOARD PROPERTIES
@@ -50,6 +50,9 @@ class GameBoard()
         """
         print("In generate_board")
 
+        # Generate a blank board
+        self.board = [['-' for j in range(0, self.width)] for i in range(0, self.height)]
+
 
     # Find and mark all the of the empty cells adjacent to a mine
     def mark_adjacent(self):
@@ -79,4 +82,27 @@ class GameBoard()
     # Print the board
     # FOR TESTING PURPOSES ONLY
     def print_board(self):
-        print("In print_board")
+        for i in self.board:
+            print(i)
+
+
+
+
+# TESTING CODE
+tB = GameBoard(5, 2, 1)
+tB.print_board()
+
+aB = GameBoard(3, 7, 1)
+aB.print_board()
+
+bB = GameBoard(4, 4, 1)
+bB.print_board()
+
+cB = GameBoard(6, 4, 1)
+cB.print_board()
+
+dB = GameBoard(4, 5, 1)
+dB.print_board()
+
+eB = GameBoard(5, 5, 1)
+eB.print_board()
