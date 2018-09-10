@@ -18,9 +18,9 @@ class ms_buttons:
         """
 
         self.frame = tk.Frame(master)
-        
+
         app.lower()
-        
+
         #create GUI buttons
         self.printbutton = Button(self.frame, text="New Game", command = self.newGame)
         self.printbutton.pack(side = LEFT)
@@ -49,7 +49,7 @@ class ms_buttons:
         app.focus_set()
         app.tkraise()
         self.frame.pack()
-    
+
 
 
     def newGame(self):
