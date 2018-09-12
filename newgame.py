@@ -16,26 +16,28 @@ class new_game:
     m_mines = 0
     #m_board = GameBoard(rows, cols, mines)
 
-    def __init__(rows, cols, mines):
-        start_game_input(rows, cols, mines)
-
-    def start_game_input(rows, cols, mines):
+    def __init__(self, rows, cols, mines):
         m_rows = rows
         m_cols = cols
         m_mines = mines
-        #m_board = GameBoard(rows, cols, mines)
 
-    def start_game():
+    def start_game(self):
         #create window, draw cells, create number and mine grid
         pygame.init()
-
+        logo = pygame.image.load("dog.png")
+        pygame.display.set_icon = logo
         pygame.display.set_caption("MINESWEEPER")
 
-        screen = pygame.display.set_mode((240,180))
+        screen = pygame.display.set_mode((800,600))
 
-        running = true
+        running = True
 
         while running:
+
+            image = pygame.image.load("dog.png")
+            screen.blit(image, (0,0))
+            pygame.display.flip()
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    running = false
+                    running = False
