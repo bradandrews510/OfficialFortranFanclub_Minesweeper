@@ -7,14 +7,6 @@ import random
 
 from Cell import *
 
-
-
-'''
-    CELL STRING CONVENTION
-
-    An generated but uninitialized will be labelled as 'M-0-F-H'
-'''
-
 # GameBoard class
 class GameBoard:
 
@@ -83,16 +75,6 @@ class GameBoard:
             if self.board[i][j].isMined == False:
                 self.board[i][j].set_mine()
                 mCounter = mCounter - 1
-
-    # Find and mark all the of the empty cells adjacent to a mine
-    # Should be renamed
-    def mark_adjacent(self):
-        """ @pre    None
-            @post   None
-            @return None
-        """
-        print("In mark_adjacent")
-
 
     '''
         MISC. FUNCTIONS
