@@ -5,6 +5,16 @@
 # Imports
 import random
 
+from Cell import *
+
+
+
+'''
+    CELL STRING CONVENTION
+
+    An generated but uninitialized will be labelled as 'M-0-F-H'
+'''
+
 # GameBoard class
 class GameBoard:
 
@@ -42,6 +52,22 @@ class GameBoard:
         """
         return self.width
 
+    # Get a specific row
+    # Remember that we start counting at 0
+    def get_row(self, i):
+        #print("In get_row()")
+        for j in self.board[i]:
+            print(j.get_cell_textRep())
+
+    # Get a specific column
+    # Returns a transposed version of any column
+    # Remmber, we start counting at 0
+    def get_column(self, j):
+        print("In get_column()")
+
+        #column = []
+
+        #return column
 
     '''
         BOARD GENERATION FUNCTIONS
@@ -52,10 +78,10 @@ class GameBoard:
             @post   Generates the game board...
             @return None
         """
-        print("In generate_board")
+        #print("In generate_board")
 
         # Generate a blank board
-        self.board = [['-' for j in range(0, self.width)] for i in range(0, self.height)]
+        self.board = [[Cell() for j in range(0, self.width)] for i in range(0, self.height)]
 
     # Place mines
     def place_mines(self):
@@ -63,15 +89,15 @@ class GameBoard:
             @post   Populates the game board with n mines
             @return None
         """
-        print("In place_mines")
+        #print("In place_mines")
 
         mCounter = self.numOfMines
         while mCounter > 0:
             i = random.randint(0, self.height - 1)
             j = random.randint(0, self.width  - 1)
 
-            if self.board[i][j] == '-':
-                self.board[i][j] = 'M'
+            if self.board[i][j].isMined == False:
+                self.board[i][j].set_mine
                 mCounter = mCounter - 1
 
     # Find and mark all the of the empty cells adjacent to a mine
@@ -133,15 +159,21 @@ class GameBoard:
     # FOR TESTING PURPOSES ONLY
     def print_board(self):
         for i in self.board:
-            print(i)
+            print(self.get_row(i))
 
 
 
 
 # TESTING CODE
-tB = GameBoard(5, 2, 1)
-tB.print_board()
+tB = GameBoard(2, 2, 2)
+#tB.print_board()
+print(tB.get_row(0))
 
+#print("Getting column 0")
+#print(tB.get_column(0))
+
+
+'''
 aB = GameBoard(3, 7, 1)
 aB.print_board()
 
@@ -156,3 +188,4 @@ dB.print_board()
 
 eB = GameBoard(5, 5, 1)
 eB.print_board()
+'''
