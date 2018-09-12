@@ -52,22 +52,6 @@ class GameBoard:
         """
         return self.width
 
-    # Get a specific row
-    # Remember that we start counting at 0
-    def get_row(self, i):
-        #print("In get_row()")
-        for j in self.board[i]:
-            print(j.get_cell_textRep())
-
-    # Get a specific column
-    # Returns a transposed version of any column
-    # Remmber, we start counting at 0
-    def get_column(self, j):
-        print("In get_column()")
-
-        #column = []
-
-        #return column
 
     '''
         BOARD GENERATION FUNCTIONS
@@ -97,7 +81,7 @@ class GameBoard:
             j = random.randint(0, self.width  - 1)
 
             if self.board[i][j].isMined == False:
-                self.board[i][j].set_mine
+                self.board[i][j].set_mine()
                 mCounter = mCounter - 1
 
     # Find and mark all the of the empty cells adjacent to a mine
@@ -158,34 +142,51 @@ class GameBoard:
     # Print the board
     # FOR TESTING PURPOSES ONLY
     def print_board(self):
+        # For every row in the board, create a new (temporary) local array
+        # that will be filled with the text representation of the cell
+        # self.board[i][j]
         for i in self.board:
-            print(self.get_row(i))
+            row = []
+            for j in i:
+                row.append(j.get_cell_textRep())
+            print(row)
+
+            row = []
 
 
 
 
 # TESTING CODE
+print("2x2 with 2 mines")
 tB = GameBoard(2, 2, 2)
-#tB.print_board()
-print(tB.get_row(0))
+tB.print_board()
 
-#print("Getting column 0")
-#print(tB.get_column(0))
+print("\n\n")
 
-
-'''
-aB = GameBoard(3, 7, 1)
+print("3x7 with 4 mines")
+aB = GameBoard(3, 7, 4)
 aB.print_board()
 
-bB = GameBoard(4, 4, 1)
+print("\n\n")
+
+print("4x4 with 6 mines")
+bB = GameBoard(4, 4, 6)
 bB.print_board()
 
+print("\n\n")
+
+print("6x4 with 1 mine")
 cB = GameBoard(6, 4, 1)
 cB.print_board()
 
-dB = GameBoard(4, 5, 1)
+print("\n\n")
+
+print("4x5 with 7 mines")
+dB = GameBoard(4, 5, 7)
 dB.print_board()
 
-eB = GameBoard(5, 5, 1)
+print("\n\n")
+
+print("5x5 with 3 mines")
+eB = GameBoard(5, 5, 3)
 eB.print_board()
-'''
