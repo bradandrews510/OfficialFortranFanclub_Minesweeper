@@ -3,12 +3,7 @@ import pygame
 #from Board.py import GameBoard
 
 # drawing background gameboard
-# start_game_input(rows, cols, mines) - rows, cols, #mines,
-    #create_board()
-#newgame()
-    # createnew()
-        #drawcells(rows, cols)
-    # create number_and_mine_grid()
+# initialization and start game
 
 class new_game:
     m_rows = 0
