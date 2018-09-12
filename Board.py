@@ -8,7 +8,7 @@ import random
 from Cell import *
 
 # GameBoard class
-class GameBoard:
+class Board:
 
     # Initialize a game board
     def __init__(self, width, height, numOfMines):
@@ -135,40 +135,53 @@ class GameBoard:
 
             row = []
 
-
-
-
-# TESTING CODE
-print("2x2 with 2 mines")
-tB = GameBoard(2, 2, 2)
-tB.print_board()
-
-print("\n\n")
-
-print("3x7 with 4 mines")
-aB = GameBoard(3, 7, 4)
-aB.print_board()
-
-print("\n\n")
-
-print("4x4 with 6 mines")
-bB = GameBoard(4, 4, 6)
-bB.print_board()
-
-print("\n\n")
-
-print("6x4 with 1 mine")
-cB = GameBoard(6, 4, 1)
-cB.print_board()
-
-print("\n\n")
-
-print("4x5 with 7 mines")
-dB = GameBoard(4, 5, 7)
-dB.print_board()
-
-print("\n\n")
-
-print("5x5 with 3 mines")
-eB = GameBoard(5, 5, 3)
-eB.print_board()
+# # TESTING CODE
+# print("2x2 with 2 mines")
+# tB = GameBoard(2, 2, 2)
+# board_create(tB)
+# tB.print_board()
+# recReveal(tB, 0, 0)
+#
+# print("\n\n")
+#
+# print("3x7 with 4 mines")
+# aB = GameBoard(3, 7, 4)
+# board_create(aB)
+# aB.print_board()
+# recReveal(aB, 0, 0)
+#
+#
+# print("\n\n")
+#
+# print("4x4 with 6 mines")
+# bB = GameBoard(4, 4, 6)
+# board_create(bB)
+# bB.print_board()
+# recReveal(bB, 0, 0)
+#
+# 
+# print("\n\n")
+#
+# print("6x4 with 1 mine")
+# cB = GameBoard(6, 4, 1)
+# board_create(cB)
+# cB.print_board()
+# recReveal(cB, 0, 0)
+#
+#
+# print("\n\n")
+#
+# print("4x5 with 7 mines")
+# dB = GameBoard(4, 5, 7)
+# board_create(dB)
+# dB.print_board()
+# recReveal(dB, 0, 0)
+#
+#
+# print("\n\n")
+#
+# print("5x5 with 3 mines")
+# eB = GameBoard(5, 5, 3)
+# board_create(eB)
+# eB.print_board()
+# recReveal(eB, 0, 0)
