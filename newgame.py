@@ -17,9 +17,9 @@ class new_game:
     #m_board = GameBoard(rows, cols, mines)
 
     def __init__(self, rows, cols, mines):
-        m_rows = rows
-        m_cols = cols
-        m_mines = mines
+        self.m_rows = rows
+        self.m_cols = cols
+        self.m_mines = mines
 
     def start_game(self):
         #create window, draw cells, create number and mine grid
@@ -28,7 +28,9 @@ class new_game:
         pygame.display.set_icon = logo
         pygame.display.set_caption("MINESWEEPER")
 
-        screen = pygame.display.set_mode((800,600))
+        n = self.m_rows * 20
+        m = self.m_cols * 20
+        screen = pygame.display.set_mode((n,m))
 
         running = True
 
