@@ -1,68 +1,74 @@
-import tkinter as tk
-from tkinter import *
+"""
+Cell Grid, New game, help, quit buttons functionality
+
+"""
 import pygame
-from pygame.locals import *
-import math
-import sys
-import os
-from tkinter import simpledialog
-
-#This is required before creating the window
-#app = Tk()
-
-class ms_buttons:
-
-    def start(self, master):
-        """
-        @pre Starts main game window, asks for row, column, mines input
-        """
-
-        self.frame = tk.Frame(master)
-
-        app.lower()
-
-        #create GUI buttons
-        self.printbutton = Button(self.frame, text="New Game", command = self.newGame)
-        self.printbutton.pack(side = LEFT)
-        self.quitbutton = Button(self.frame, text = "quit", command = self.frame.quit)
-        self.quitbutton.pack(side = LEFT)
-
-        #get user inputs
-        rows = tk.simpledialog.askinteger("Welcome to Minesweeper!", "Enter the number of rows", parent = app, minvalue = 2, maxvalue = 100)
-        if rows is not None:
-            print(rows)
-
-            cols = tk.simpledialog.askinteger("Welcome to Minesweeper!", "Enter the number of columns", parent = app, minvalue = 2, maxvalue = 100)
-            if cols is not None:
-                print(cols)
-
-                mines = tk.simpledialog.askinteger("Welcome to Minesweeper!", "Enter the number of mines", parent = app, minvalue = 1, maxvalue = rows * cols - 1)
-                if mines is not None:
-                    print(mines)
-                else:
-                    self.frame.quit
-            else:
-                self.frame.quit
-        else:
-            self.frame.quit
-
-        app.focus_set()
-        app.tkraise()
-        self.frame.pack()
 
 
+class button(pygame.sprite.Sprite):
+	"""
+	define button object 
+	"""
 
-    def newGame(self):
-        python = sys.executable
-        os.execl(python, python, * sys.argv)
+	cell_image = pygame.image.load('cell_image.png')
+	def __init__(self, x_start,y_start,width, height):
+		"""
+		Constructor taking beginning x and y pos, and width/height
+		"""
+		#
+		super().__init__()
 
-"""
-construct an ms_buttons object
-ms = ms_buttons()
+def button(msg, x_pos, y_pos, width, height, color, action = None):
+	mouse = pygame.mouse.get_pos()
+	click = pygame.mouse.get_pressed()
+	print(click)
+	if x_pos+width > mouse[0] > x_pos and y_pos+height > mouse[1] > y_pos:
+		if(click[0] == 1 and action != None):
+			action()
 
-starts running of window
-ms.start(app)
+def quit_game():
+	pygame.quit()
+	quit()
 
-keeps game loop running
-app.mainloop()
-"""
+#def help():
+	
+
+class minesweeper_gui:
+
+	def gui_start(self,rows,cols,mines):
+		pygame.init()
+		
+
+		cell_size = 20
+		black = (0,0,0)
+		white = (255,255,255)
+		gray = (128,128,128)
+		cell_image = pygame.image.load('cell_image.png')
+		gameDisplay = pygame.display.set_mode((display_width, display_height))		
+
+		
+		#loop through rows
+		for row in range(rows):
+			#loop through each column
+			for column in range(cols):
+				#draw resource at position
+				#pygame.draw.rect(gameDisplay,gray, (column*cell_size, row*cell_size,cell_size,cell_size))
+				gameDisplay.blit(cell_image, (row * cell_size, 40 + column * cell_size))
+		
+		pygame.display.set_caption('Minesweeper')
+		running = True
+		while(running):
+			for event in pygame.event.get():
+				print(event)
+				if event.type == pygame.QUIT:
+					running = False
+				#if event.type == pygame.MOUSEBUTTONDOWN:
+					#mouse_pos = event.pos
+					#if button.
+			pygame.display.update()
+
+display_width = 800
+display_height = 600
+gameDisplay = pygame.display.set_mode((display_width, display_height))
+ms = minesweeper_gui()
+ms.gui_start(10,10,0)
