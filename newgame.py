@@ -32,13 +32,20 @@ class new_game:
         m = self.m_cols * 20
         screen = pygame.display.set_mode((n,m))
 
+        background = pygame.Surface(screen.get_size())
+        background.fill((255,255,255))
+        background = background.convert()
+        screen.blit(background, (0,0))
+
+        image = pygame.image.load("tile.png")
+        for x in range(self.m_rows):
+            for y in range(self.m_cols):
+                screen.blit(image, (x*20,y*20))
+                pygame.display.flip()
+
         running = True
 
         while running:
-
-            image = pygame.image.load("dog.png")
-            screen.blit(image, (0,0))
-            pygame.display.flip()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
