@@ -7,11 +7,12 @@ import sys
 import os
 from tkinter import simpledialog
 
-app = Tk()
+#This is required before creating the window
+#app = Tk()
 
 class ms_buttons:
 
-    def __init__(self, master):
+    def start(self, master):
         """
         @pre Starts main game window, asks for row, column, mines input
         """
@@ -26,6 +27,7 @@ class ms_buttons:
         self.quitbutton = Button(self.frame, text = "quit", command = self.frame.quit)
         self.quitbutton.pack(side = LEFT)
 
+        #get user inputs
         rows = tk.simpledialog.askinteger("Welcome to Minesweeper!", "Enter the number of rows", parent = app, minvalue = 2, maxvalue = 100)
         if rows is not None:
             print(rows)
@@ -43,6 +45,7 @@ class ms_buttons:
                 self.frame.quit
         else:
             self.frame.quit
+
         app.focus_set()
         app.tkraise()
         self.frame.pack()
@@ -53,21 +56,13 @@ class ms_buttons:
         python = sys.executable
         os.execl(python, python, * sys.argv)
 
-
 """
-def leftclick(event):
-    print("left")
-def middleclick(event):
-    print("middle")
-def rightclick(event):
-    print("right")
+construct an ms_buttons object
+ms = ms_buttons()
 
-frame = tk.Frame(app, width = 300, height=250)
-frame.bind("<Button-1>", leftclick)
-frame.bind("<Button-2>", middleclick)
-frame.bind("<Button-3>", rightclick)
-"""
+starts running of window
+ms.start(app)
 
-ms = ms_buttons(app)
-
+keeps game loop running
 app.mainloop()
+"""
