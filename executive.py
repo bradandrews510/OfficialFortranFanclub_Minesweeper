@@ -11,6 +11,7 @@ class executive:
     #     board = 1
 
     def run(self):
+        print("WELCOME TO MINESWEEPER!")
         rows = int(input("How many rows? "))
         cols = int(input("How many columns? "))
         mines = int(input("How many mines? "))
