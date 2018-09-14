@@ -38,7 +38,7 @@ class new_game:
         for x in range(self.m_rows):
             for y in range(self.m_cols):
                 screen.blit(image, (x*20,y*20))
-                pygame.display.flip()
+        pygame.display.flip()
 
     def run_game(self):
         running = True
