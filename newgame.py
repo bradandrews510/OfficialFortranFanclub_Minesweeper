@@ -3,12 +3,7 @@ import pygame
 #from Board.py import GameBoard
 
 # drawing background gameboard
-# start_game_input(rows, cols, mines) - rows, cols, #mines,
-    #create_board()
-#newgame()
-    # createnew()
-        #drawcells(rows, cols)
-    # create number_and_mine_grid()
+# initialization and start game
 
 class new_game:
     m_rows = 0
@@ -16,26 +11,37 @@ class new_game:
     m_mines = 0
     #m_board = GameBoard(rows, cols, mines)
 
-    def __init__(rows, cols, mines):
-        start_game_input(rows, cols, mines)
+    def __init__(self, rows, cols, mines):
+        self.m_rows = rows
+        self.m_cols = cols
+        self.m_mines = mines
 
-    def start_game_input(rows, cols, mines):
-        m_rows = rows
-        m_cols = cols
-        m_mines = mines
-        #m_board = GameBoard(rows, cols, mines)
-
-    def start_game():
+    def start_game(self):
         #create window, draw cells, create number and mine grid
         pygame.init()
-
+        logo = pygame.image.load("dog.png")
+        pygame.display.set_icon = logo
         pygame.display.set_caption("MINESWEEPER")
 
-        screen = pygame.display.set_mode((240,180))
+        n = self.m_rows * 20
+        m = self.m_cols * 20
+        screen = pygame.display.set_mode((n,m))
 
-        running = true
+        background = pygame.Surface(screen.get_size())
+        background.fill((255,255,255))
+        background = background.convert()
+        screen.blit(background, (0,0))
+
+        image = pygame.image.load("tile.png")
+        for x in range(self.m_rows):
+            for y in range(self.m_cols):
+                screen.blit(image, (x*20,y*20))
+                pygame.display.flip()
+
+        running = True
 
         while running:
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    running = false
+                    running = False
