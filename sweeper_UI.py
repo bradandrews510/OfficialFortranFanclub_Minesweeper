@@ -9,6 +9,13 @@ import math
 #import Board
 #import recReveal
 
+''' CONSTANTS '''
+
+# Colors
+
+
+
+
 #cell and flag images 20x20
 revealed_image = pygame.image.load("tile.png")
 cell_image = pygame.image.load("cell_image.png")
@@ -34,7 +41,7 @@ cell_contents = {
     '7' : seven_image,
     '8' : eight_image,
     'M' : mine_image,
-    '-' : revealed_image
+    '-' : rev ealed_image
 }
 
 class cell_button:
@@ -118,30 +125,15 @@ def reveal(row,col):
 #def reveal(row,col):
 
 
-class minesweeper_gui:
-        '''
-        def draw_buttons(self):
-            new_game_button = gui_button((255,255,255), 0, 0, button_width, 40, "New Game", new_game)
-            new_game_button.draw(gameDisplay, 1)
-            help_button = gui_button((255,255,255),0 + button_width, 0, button_width / 2, 40, "Help", help)
-            help_button.draw(gameDisplay, 1)
-            quit_button = gui_button((255,255,255),display_width - button_width/2, 0, button_width/2, 40, "Quit", quit_game)
-            quit_button.draw(gameDisplay, 1)
-            flags_button = gui_button((255,255,255),display_width - (button_width * 2.5), 0, button_width + button_width, 40, "Flags remaining: " + str(mines))
-            flags_button.draw(gameDisplay, 1)
-        '''
-        def gui_start(rows,cols,mines):
-                """
-                start game loop
-                """
-
-                pygame.init()
-                white = (255,255,255)
-                black = (0,0,0)
-                gray = (122,122,122)
-                flags = mines
-                min_width = 320
-                min_height = 220
+class GUI:
+    def gui_start(rows,cols,mines):
+            pygame.init()
+            white = (255,255,255)
+            black = (0,0,0)
+            gray = (122,122,122)
+            flags = mines
+            min_width = 320
+            min_height = 220
 
                 if(cols * cell_size < min_width):
                     display_width = min_width
