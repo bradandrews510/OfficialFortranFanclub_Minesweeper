@@ -21,6 +21,8 @@ class Board:
         # Go through the process of generating the board
         self.generate_board()
 
+        self.place_mines() # Move this to the game logic
+
     '''
         GET FUNCTIONS
     '''
@@ -58,9 +60,19 @@ class Board:
         # Generate a blank board
         self.board = [[Cell() for j in range(0, self.width)] for i in range(0, self.height)]
 
+    # Place mines
+    def place_mines(self):
+        """ @pre    The number of mines n is valid
+            @post   Populates the game board with n mines
+            @return None
+        """
+        #print("In place_mines")
+            if self.board[i][j].isMined == False:
+                self.board[i][j].set_mine()
+                mCounter = mCounter - 1
 
     '''
-        MISC. FUNCTIONS
+    MISC. FUNCTIONS
     '''
 
     # Return a dictionary with the accessible directions for some specific cell
@@ -116,8 +128,6 @@ class Board:
                 row.append(j.get_cell_textRep())
             print(row)
 
-            row = []
-
 # # TESTING CODE
 # print("2x2 with 2 mines")
 # tB = GameBoard(2, 2, 2)
@@ -168,3 +178,66 @@ class Board:
 # board_create(eB)
 # eB.print_board()
 # recReveal(eB, 0, 0)
+
+def mark_adj(board):
+    for i in range(0, board.get_height()):
+        for j in range(0, board.get_width()):
+            if board.board[i][j].isMined == False:
+                # Work cell
+                wCell = board.board[i][j]
+                accessible = board.get_acces_by_cell(i, j)
+
+                for t in accessible:
+                    if t.isMined:
+                        wCell.set_num_adj_mines(wCell.get_num_adj() + 1)
+                        wCell.set_cell_textRep(str(wCell.get_num_adj()))
+
+
+'''
+                for t in accessible:
+                    if t.isMined:
+                        board.board[i][j].numAdjacent = board.board[i][j].numAdjacent + 1
+                    board.board[i][j].textRep = str(board.board[i][j].numAdjacent)
+'''
+'''
+# TESTING CODE
+print("2x2 with 2 mines")
+tB = GameBoard(2, 2, 2)
+mark_adj(tB)
+tB.print_board()
+
+print("\n\n")
+
+print("3x7 with 4 mines")
+aB = GameBoard(3, 7, 4)
+mark_adj(aB)
+aB.print_board()
+
+print("\n\n")
+
+print("4x4 with 6 mines")
+bB = GameBoard(4, 4, 6)
+mark_adj(bB)
+bB.print_board()
+
+print("\n\n")
+
+print("6x4 with 1 mine")
+cB = GameBoard(6, 4, 1)
+mark_adj(cB)
+cB.print_board()
+
+print("\n\n")
+
+print("4x5 with 7 mines")
+dB = GameBoard(4, 5, 7)
+mark_adj(dB)
+dB.print_board()
+
+print("\n\n")
+
+print("5x5 with 3 mines")
+eB = GameBoard(5, 5, 3)
+mark_adj(eB)
+eB.print_board()
+'''
