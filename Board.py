@@ -20,9 +20,6 @@ class Board:
 
         # Go through the process of generating the board
         self.generate_board()
-
-        self.place_mines() # Move this to the game logic
-
     '''
         GET FUNCTIONS
     '''
@@ -61,15 +58,6 @@ class Board:
         self.board = [[Cell() for j in range(0, self.width)] for i in range(0, self.height)]
 
     # Place mines
-    def place_mines(self):
-        """ @pre    The number of mines n is valid
-            @post   Populates the game board with n mines
-            @return None
-        """
-        #print("In place_mines")
-            if self.board[i][j].isMined == False:
-                self.board[i][j].set_mine()
-                mCounter = mCounter - 1
 
     '''
     MISC. FUNCTIONS

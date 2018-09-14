@@ -74,20 +74,22 @@ def place_mines(grid, numofMines):
             grid.board[i][j].set_mine()
             mCounter = mCounter - 1
 
-def game_over():
+def game_over(gameSurface):
     global FPSCLOCK, DISPLAYSURFACE  #Testing purposes
     global BASICFONT, TEXTFONT, RESET_SURF, RESET_RECT, QUIT_SURF, QUIT_RECT
 
-    pygame.init()  #Testing purposes
-    pygame.display.set_caption('Minesweeper')  #Testing purposes
+
+    # pygame.init()  #Testing purposes
+    # pygame.display.set_caption('Minesweeper')  #Testing purposes
+    DISPLAYSIZE = screen.get_size();
     FPSCLOCK = pygame.time.Clock()  #Testing purposes
-    DISPLAYSURFACE = pygame.display.set_mode((800, 600))  #Testing purposes
-    BASICFONT = pygame.font.SysFont('Courier New', 30)
-    TEXTFONT = pygame.font.SysFont('Courier New', 40)
+    DISPLAYSURFACE = gameSurface; #Testing purposes
+    BASICFONT = pygame.font.SysFont('None', 30)
+    TEXTFONT = pygame.font.SysFont('None', 40)
     RESET_SURF, RESET_RECT = drawButton('New Game', (0, 0, 0), (225, 225, 225), 300/3, 200*.75)
     QUIT_SURF, QUIT_RECT = drawButton('Quit', (0, 0, 0), (225, 225, 225), 300*.75, 200*.75)
     MENU_SURF = pygame.Surface((300,200))
-    MENU_RECT = placeSurface(MENU_SURF, 800/2, 600/2)
+    MENU_RECT = placeSurface(MENU_SURF, DISPLAYSIZE.x/2, DISPLAYSIZE.y/2)
 
     RESET_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
     QUIT_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
@@ -95,13 +97,13 @@ def game_over():
     mouse_x = 0
     mouse_y = 0
 
-    DISPLAYSURFACE.fill((0,0,0))
+    #DISPLAYSURFACE.fill((0,0,0))
 
     while True:
         mouseClicked = False
         spacePressed = False
 
-        DISPLAYSURFACE.fill((0,0,0))  #Testing purposes
+        #DISPLAYSURFACE.fill((0,0,0))  #Testing purposes
 
         DISPLAYSURFACE.blit(MENU_SURF, MENU_RECT)
         MENU_SURF.fill((255,255,255))
