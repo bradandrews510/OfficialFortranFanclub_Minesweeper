@@ -183,9 +183,11 @@ class minesweeper_gui:
                                                 if (cell.rect.colliderect(m_rect)):
                                                     if cell.m_cell.isFlagged == False:
                                                         #if not flagged, turn revealed to true
-                                                        print(cell.y, cell.x)
                                                         mine_hit = reveal(gB,cell.y,cell.x)
-
+                                                        if(mine_hit):
+                                                            for row in range(rows):
+                                                                for cell in cell_list[row]:
+                                                                    cell.m_cell.set_revealed()
 
                             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
                                     #flag on right click
