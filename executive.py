@@ -3,6 +3,7 @@
 
 import pygame
 from newgame import new_game
+from sweeper_UI import minesweeper_gui
 
 class executive:
 
@@ -13,9 +14,11 @@ class executive:
 
         #self.mines = int(input("Number of mines: "))
         #add checks for valid input
-        game = new_game(self.rows, self.cols, self.mines)
-        game.start_game()
-        game.run_game()
+        # game = new_game(self.rows, self.cols, self.mines)
+        # game.start_game()
+        # game.run_game()
+        ms = minesweeper_gui()
+        ms.gui_start(self.rows, self.cols, self.mines)
 
     def get_input(self):
         while True:
