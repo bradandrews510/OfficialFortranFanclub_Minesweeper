@@ -26,6 +26,9 @@ class Cell:
         # n: The number of adjacent mines. Can only occurs when isMined == False
         self.textRep = '-'
 
+    def get_num_adj(self):
+        return self.numAdjacent
+
     def set_mine(self):
         self.isMined = True
         self.textRep = 'M'
@@ -60,6 +63,10 @@ class Cell:
         # We convert the number of mines to a string in order to keep all text
         # representations as the same data type
         self.numAdjacent = str(nMines)
+
+    def set_cell_textRep(self, c):
+        self.textRep = str(c)
+
 
     def get_cell_textRep(self):
         return self.textRep
