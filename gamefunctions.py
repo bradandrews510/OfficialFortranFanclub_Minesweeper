@@ -128,7 +128,8 @@ def game_over(gameSurface):
         if RESET_RECT.collidepoint(mouse_x, mouse_y):
             highlightButton(DISPLAYSURFACE, RESET_RECT)
             if mouseClicked:
-                start_game()
+                exec = executive()
+                executive.run()
                 running = False;
 
 
