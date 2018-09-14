@@ -216,16 +216,12 @@ class minesweeper_gui:
                     pygame.display.update()
                 if(mine_hit):
                     game_over(gameDisplay)
-def start_game():
+def start_game(rows,cols,mines):
     pygame.quit()
     '''
     @TODO: add input checking
     '''
     ms = minesweeper_gui
-    get_inp = True
-    rows = int(input("Rows: "))
-    cols = int(input("Columns: "))
-    mines = int(input("Mines: "))
     gB = Board(cols,rows)
     place_mines(gB,mines)
     board_create(gB)
