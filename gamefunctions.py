@@ -105,6 +105,7 @@ def game_over(gameSurface):
     while(running):
         mouseClicked = False
         spacePressed = False
+        running = True
 
         #DISPLAYSURFACE.fill((0,0,0))  #Testing purposes
 
@@ -128,10 +129,9 @@ def game_over(gameSurface):
         if RESET_RECT.collidepoint(mouse_x, mouse_y):
             highlightButton(DISPLAYSURFACE, RESET_RECT)
             if mouseClicked:
-                exec = executive()
-                executive.run()
-                running = False;
-
+                running = False
+                pygame.quit()
+                break
 
         # check if show box is clicked
         if QUIT_RECT.collidepoint(mouse_x, mouse_y):

@@ -2,7 +2,6 @@
 #executive to run self.minesweeper
 
 import pygame
-from newgame import new_game
 from sweeper_UI import *
 
 class executive:
@@ -10,14 +9,16 @@ class executive:
     def run(self):
         print("WELCOME TO MINESWEEPER!")
 
-        self.get_input()
+        while True:
 
-        #self.mines = int(input("Number of mines: "))
-        #add checks for valid input
-        # game = new_game(self.rows, self.cols, self.mines)
-        # game.start_game()
-        # game.run_game()
-        start_game(self.rows, self.cols, self.mines)
+            self.get_input()
+
+            #self.mines = int(input("Number of mines: "))
+            #add checks for valid input
+            # game = new_game(self.rows, self.cols, self.mines)
+            # game.start_game()
+            # game.run_game()
+            start_game(self.rows, self.cols, self.mines)
 
     def get_input(self):
         while True:
