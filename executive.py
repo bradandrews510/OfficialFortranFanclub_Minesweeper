@@ -12,9 +12,10 @@ class executive:
 
     def run(self):
         print("WELCOME TO MINESWEEPER!")
-        rows = int(input("How many rows? "))
-        cols = int(input("How many columns? "))
-        mines = int(input("How many mines? "))
+        rows = int(input("Number of rows: "))
+        cols = int(input("Number of columns: "))
+        mines = int(input("Number of mines: "))
+        #add checks for valid input
         game = new_game(rows, cols, mines)
         game.start_game()
 
