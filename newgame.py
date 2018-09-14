@@ -1,6 +1,5 @@
 import pygame
-#from sweeper_UI import ms_buttons
-from Board import GameBoard
+#from Board import GameBoard
 
 # drawing background gameboard
 # initialization and start game
@@ -12,13 +11,13 @@ class new_game:
         self.m_rows = rows
         self.m_cols = cols
         self.m_mines = mines
-        self.m_board = GameBoard(self.m_cols, self.m_rows, self.m_mines)
+        #self.m_board = GameBoard(self.m_cols, self.m_rows, self.m_mines)
 
     def start_game(self):
         #create window, draw cells, create number and mine grid
         pygame.init()
         logo = pygame.image.load("mine_tile.png")
-        pygame.display.set_icon = logo
+        pygame.display.set_icon(logo)
         pygame.display.set_caption("MINESWEEPER")
 
         # n: number of pixels down
