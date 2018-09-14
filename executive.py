@@ -2,7 +2,6 @@
 #executive to run self.minesweeper
 
 import pygame
-from newgame import new_game
 from sweeper_UI import *
 
 class executive:
