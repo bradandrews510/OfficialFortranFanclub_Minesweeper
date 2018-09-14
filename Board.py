@@ -4,7 +4,6 @@
 
 # Imports
 import random
-from gamefunctions import *
 
 from Cell import *
 
@@ -13,17 +12,14 @@ from Cell import *
 class Board:
 
     # Initialize a game board
-    def __init__(self, width, height, numOfMines):
+    def __init__(self, width, height):
 
         # Store the height, width, and number of mines
         self.width  = width
         self.height = height
-        self.numOfMines = numOfMines
 
         # Go through the process of generating the board
         self.generate_board()
-        self.place_mines()
-        board_create(self)
 
     '''
         GET FUNCTIONS
@@ -62,22 +58,6 @@ class Board:
         # Generate a blank board
         self.board = [[Cell() for j in range(0, self.width)] for i in range(0, self.height)]
 
-    # Place mines
-    def place_mines(self):
-        """ @pre    The number of mines n is valid
-            @post   Populates the game board with n mines
-            @return None
-        """
-        #print("In place_mines")
-
-        mCounter = self.numOfMines
-        while mCounter > 0:
-            i = random.randint(0, self.height - 1)
-            j = random.randint(0, self.width  - 1)
-
-            if self.board[i][j].isMined == False:
-                self.board[i][j].set_mine()
-                mCounter = mCounter - 1
 
     '''
         MISC. FUNCTIONS
@@ -137,11 +117,6 @@ class Board:
             print(row)
 
             row = []
-
-print("2x2 with 2 mines")
-tB = Board(5,5,5)
-tB.print_board()
-recReveal(tB, 0, 0)
 
 # # TESTING CODE
 # print("2x2 with 2 mines")

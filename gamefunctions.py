@@ -1,6 +1,8 @@
 import pygame, sys, time, random
 from pygame.locals import *
+import random
 
+from Board import *
 from Cell import *
 
 def recReveal(grid, rows, cols):
@@ -54,6 +56,23 @@ def adjacent(grid, rows, cols):
     grid.board[rows][cols].set_num_adj_mines(int(grid.board[rows][cols].numAdjacent)+1)
     grid.board[rows][cols].textRep=grid.board[rows][cols].numAdjacent
     return
+
+#places the mines
+def place_mines(grid, numofMines):
+    """ @pre    The number of mines n is valid
+        @post   Populates the game board with n mines
+        @return None
+    """
+    #print("In place_mines")
+
+    mCounter = numofMines
+    while mCounter > 0:
+        i = random.randint(0, grid.height - 1)
+        j = random.randint(0, grid.width  - 1)
+
+        if grid.board[i][j].isMined == False:
+            grid.board[i][j].set_mine()
+            mCounter = mCounter - 1
 
 def game_over():
     global FPSCLOCK, DISPLAYSURFACE  #Testing purposes
@@ -145,3 +164,10 @@ def highlightButton(screen, buttonRect):
 
     linewidth = 4
     pygame.draw.rect(screen, (0, 128, 0), (buttonRect.left-linewidth, buttonRect.top-linewidth, buttonRect.width+2*linewidth, buttonRect.height+2*linewidth), linewidth)
+
+print("2x2 with 2 mines")
+tB = Board(5,5)
+place_mines(tB,5)
+board_create(tB)
+tB.print_board()
+recReveal(tB, 0, 0)
