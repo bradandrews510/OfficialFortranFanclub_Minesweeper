@@ -27,7 +27,7 @@ class Cell:
         self.textRep = '-'
 
     def get_num_adj(self):
-        return self.numAdjacent
+        return int(self.numAdjacent)
 
     def set_mine(self):
         self.isMined = True

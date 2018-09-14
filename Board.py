@@ -172,13 +172,10 @@ def mark_adj(board):
                 wCell = board.board[i][j]
                 accessible = board.get_acces_by_cell(i, j)
 
-                nAdj = 0
                 for t in accessible:
                     if t.isMined:
-                        nAdj = nAdj + 1
-
-                wCell.set_num_adj_mines(nAdj)
-                wCell.set_cell_textRep(nAdj)
+                        wCell.set_num_adj_mines(wCell.get_num_adj() + 1)
+                        wCell.set_cell_textRep(str(wCell.get_num_adj()))
 
 
 '''
