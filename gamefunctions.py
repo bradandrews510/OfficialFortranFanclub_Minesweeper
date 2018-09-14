@@ -83,7 +83,7 @@ def game_over(gameSurface):
 
     # pygame.init()  #Testing purposes
     # pygame.display.set_caption('Minesweeper')  #Testing purposes
-    DISPLAYSIZE = screen.get_size();
+    DISPLAYSIZE = gameSurface.get_size();
     FPSCLOCK = pygame.time.Clock()  #Testing purposes
     DISPLAYSURFACE = gameSurface; #Testing purposes
     BASICFONT = pygame.font.SysFont('None', 30)
