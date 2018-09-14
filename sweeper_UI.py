@@ -7,7 +7,7 @@ import sys
 import math
 from Board import *
 from Cell import Cell
-#import gamefunctions
+from gamefunctions import *
 #import Board
 #import recReveal
 
@@ -44,13 +44,12 @@ class cell_button:
     @pre cell object with draw, clicked, reveal, flag functions
     @post none
     """
-    def __init__(self,x, y, width, height, contents):
+    def __init__(self,x, y, width, height, cell):
         """
         @pre constructor for cell button object
         @post creates a rect at given location of given size
         """
-        self.contents = contents
-        self.m_cell = Cell()
+        self.m_cell = cell
         self.rect = pygame.Rect(x * width,y * height + 40,width,height)
         self.x= x
         self.y= y
@@ -110,12 +109,14 @@ def reveal(row,col):
     @return None
 """
 
-#def reveal(row,col):
+def reveal(gB, row,col):
+    return recReveal(gB,row,col)
+
 
 
 class minesweeper_gui:
 
-        def gui_start(rows,cols,mines):
+        def gui_start(gB, rows, cols, mines):
                 """
                 start game loop
                 """
@@ -159,8 +160,8 @@ class minesweeper_gui:
                 quit_button.draw(gameDisplay, 1)
                 flags_button = gui_button((255,255,255),display_width - (button_width * 2.5), 0, button_width + button_width, 40, "Flags remaining: " + str(flags))
                 flags_button.draw(gameDisplay, 1)
-                running = True
-                while(running):
+                mine_hit = False
+                while(mine_hit != True):
 
                     for event in pygame.event.get():
                             if event.type == pygame.QUIT:
@@ -182,7 +183,8 @@ class minesweeper_gui:
                                                 if (cell.rect.colliderect(m_rect)):
                                                     if cell.m_cell.isFlagged == False:
                                                         #if not flagged, turn revealed to true
-                                                        cell.m_cell.set_revealed
+                                                        print(cell.y, cell.x)
+                                                        mine_hit = reveal(gB,cell.y,cell.x)
 
 
                             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
@@ -203,15 +205,17 @@ class minesweeper_gui:
                     for row in range(rows):
                         for cell in cell_list[row]:
                             if cell.m_cell.isRevealed:
-                                gameDisplay.blit(revealed_image, (cell.x * cell_size, 40 + cell.y * cell_size))
+                                gameDisplay.blit(cell_contents[gB.board[cell.x][cell.y].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
                             elif cell.m_cell.isFlagged:
                                 gameDisplay.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
                             else:
                                 gameDisplay.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
 
 
-                    pygame.display.update()
 
+                    pygame.display.update()
+                if(mine_hit):
+                    game_over(gameDisplay)
 def start_game():
     pygame.quit()
     '''
@@ -222,8 +226,9 @@ def start_game():
     rows = int(input("Rows: "))
     cols = int(input("Columns: "))
     mines = int(input("Mines: "))
-    gB = GameBoard(cols,rows,mines)
-    mark_adj(gB)
-    ms.gui_start(rows, cols, mines)
+    gB = Board(cols,rows)
+    place_mines(gB,mines)
+    board_create(gB)
+    ms.gui_start(gB,rows, cols, mines)
 
 start_game()
