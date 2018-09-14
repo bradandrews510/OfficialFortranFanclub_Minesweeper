@@ -1,0 +1,115 @@
+[33mcommit 7809c21a7415e01fdb0e4465d4edbe9082911e3e[m[33m ([m[1;36mHEAD -> [m[1;32mCellTests[m[33m, [m[1;31morigin/CellTests[m[33m)[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Wed Sep 12 10:35:13 2018 -0500
+
+    Added some logic checks to set_flag() in the Cell class
+
+[33mcommit 2c35dabda36b535387ea8047b8bd425d5d7dd0c0[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Wed Sep 12 09:48:03 2018 -0500
+
+    Fixed the place_mines() and print_board() functions
+
+[33mcommit 1ec8001d4765bd0d85b13c3789866bca76596ad1[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Wed Sep 12 09:40:27 2018 -0500
+
+    Testing out a cell class
+
+[33mcommit 52607746d0951bde7a1554ba0c3738c80bcdc5c2[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 14:48:02 2018 -0500
+
+    Wrote place_mines()
+
+[33mcommit 03a983fef8d7d1b7ec5b6e5cb31b1d3dae812b0d[m
+Merge: ae4ac9f 8971245
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 14:39:55 2018 -0500
+
+    Merge branch 'master' of https://github.com/sycombs/OfficialFortranFanclub_Minesweeper
+    
+    Updating local files. Only made changes to Board.py
+
+[33mcommit ae4ac9f0ab786d36fdadae6e584659e7ec9284c8[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 14:38:31 2018 -0500
+
+    Added get_access_by_cell . This is short for 'get accessible by cell', which should return a dictionary that marks all the directions that can be moved when at one specific cell
+
+[33mcommit 89712459bb53fd2063673be06870443b7dfca01b[m
+Merge: cac75f9 6153c5f
+Author: Daniel Gonzalez <dgonzalez93@gmail.com>
+Date:   Mon Sep 10 14:28:25 2018 -0500
+
+    Merge branch 'master' of https://github.com/sycombs/OfficialFortranFanclub_Minesweeper
+    
+    Update local to remote
+
+[33mcommit 6153c5ff0a27a0cc1fd27356f6f18ab7af5777f6[m
+Author: Sydney Combs <sydneyycombs@gmail.com>
+Date:   Mon Sep 10 14:27:10 2018 -0500
+
+    No changes
+
+[33mcommit eebb5ff7fd418714d3b0c36406aa2c15e46ba8fa[m
+Merge: 23ce4b5 59b0bb9
+Author: Sydney Combs <sydneyycombs@gmail.com>
+Date:   Mon Sep 10 14:26:56 2018 -0500
+
+    No changes
+
+[33mcommit cac75f9789dbe2c3fdfb55ecfdb37b5105267d12[m
+Merge: b4fbbc7 59b0bb9
+Author: Daniel Gonzalez <dgonzalez93@gmail.com>
+Date:   Mon Sep 10 14:22:03 2018 -0500
+
+    Merge branch 'master' of https://github.com/sycombs/OfficialFortranFanclub_Minesweeper
+
+[33mcommit b4fbbc7cc29cc12f68b9e23a6d67ed48158fc804[m
+Author: Daniel Gonzalez <dgonzalez93@gmail.com>
+Date:   Mon Sep 10 14:21:27 2018 -0500
+
+    remove auto-start on creation
+
+[33mcommit 23ce4b5723fe43beae75f7aecdb48ecaf6dcc7fe[m
+Author: Sydney Combs <sydneyycombs@gmail.com>
+Date:   Mon Sep 10 14:20:01 2018 -0500
+
+    newgame.py: constructor added, window initialization added
+
+[33mcommit 59b0bb96e0c954f004563c31d8a32be384f6f4f6[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 13:57:01 2018 -0500
+
+    Wrote generate_board() and added a few test cases to test different configurations
+
+[33mcommit c3f792a37af94fa9f042cfdab004b060aef52e65[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 13:47:57 2018 -0500
+
+    Added get_height(), get_width(), and GameBoard's __init__ now stores the height, width, and number of mines
+
+[33mcommit 046f064e614ab9852ffd0677907c733e110fe01e[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 13:33:22 2018 -0500
+
+    Removed some functions (I don't remmber which...) and cleaned up the code a bit. The skeleton for the comments is there, but that's not finished either...
+
+[33mcommit fe035adc55295c040ad1b235b1f747357c69ccde[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 13:15:53 2018 -0500
+
+    Added documentation
+
+[33mcommit b74bba5c1ffb22214b245aecfa36c9c56a4974a1[m
+Author: Daniel Gonzalez <dgonzalez93@gmail.com>
+Date:   Mon Sep 10 13:08:55 2018 -0500
+
+    Initial commit of UI file
+
+[33mcommit f5b9dcd8012fd4dfd7149d08ba0e0405372ea78a[m
+Author: EDHidalgo <ehidalgo@ku.edu>
+Date:   Mon Sep 10 12:39:55 2018 -0500
+
+    Testing a commit to the online repository
