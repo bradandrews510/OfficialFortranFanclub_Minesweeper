@@ -11,16 +11,16 @@ from Cell import *
 class GameBoard:
 
     # Initialize a game board
-    def __init__(self, width, height, numOfMines):
+    def __init__(self, width, height, numOfMines): # Remove # of mines
 
         # Store the height, width, and number of mines
         self.width  = width
         self.height = height
-        self.numOfMines = numOfMines
+        self.numOfMines = numOfMines # Move this to game logic
 
         # Go through the process of generating the board
         self.generate_board()
-        self.place_mines()
+        self.place_mines() # Move this to the game logic
 
     '''
         GET FUNCTIONS
@@ -139,6 +139,7 @@ class GameBoard:
 
 
 # TESTING CODE
+'''
 print("2x2 with 2 mines")
 tB = GameBoard(2, 2, 2)
 tB.print_board()
@@ -172,3 +173,4 @@ print("\n\n")
 print("5x5 with 3 mines")
 eB = GameBoard(5, 5, 3)
 eB.print_board()
+'''

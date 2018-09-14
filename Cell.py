@@ -33,7 +33,7 @@ class Cell:
             return -1 # This is supposed to subtract one flag from the player's
             # available flags
 
-        else if self.isFlagged == True:
+        elif self.isFlagged == True:
             self.isFlagged = False
             return 1 # Return +1 flags to player
 
