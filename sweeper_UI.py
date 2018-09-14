@@ -127,7 +127,7 @@ class minesweeper_gui:
                 gray = (122,122,122)
                 flags = mines
                 min_width = 320
-                min_height = 220
+                min_height = 240
 
                 if(cols * cell_size < min_width):
                     display_width = min_width
@@ -205,7 +205,7 @@ class minesweeper_gui:
                     for row in range(rows):
                         for cell in cell_list[row]:
                             if cell.m_cell.isRevealed:
-                                gameDisplay.blit(cell_contents[gB.board[cell.x][cell.y].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
+                                gameDisplay.blit(cell_contents[gB.board[cell.y][cell.x].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
                             elif cell.m_cell.isFlagged:
                                 gameDisplay.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
                             else:
@@ -216,19 +216,13 @@ class minesweeper_gui:
                     pygame.display.update()
                 if(mine_hit):
                     game_over(gameDisplay)
-def start_game():
+def start_game(rows,cols,mines):
     pygame.quit()
     '''
     @TODO: add input checking
     '''
     ms = minesweeper_gui
-    get_inp = True
-    rows = int(input("Rows: "))
-    cols = int(input("Columns: "))
-    mines = int(input("Mines: "))
     gB = Board(cols,rows)
     place_mines(gB,mines)
     board_create(gB)
     ms.gui_start(gB,rows, cols, mines)
-
-start_game()
