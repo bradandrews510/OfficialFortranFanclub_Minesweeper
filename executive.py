@@ -5,10 +5,6 @@ import pygame
 from newgame import new_game
 
 class executive:
-    # board = 0
-    #
-    # def __init__(self):
-    #     board = 1
 
     def run(self):
         print("WELCOME TO MINESWEEPER!")
@@ -25,8 +21,8 @@ class executive:
         while True:
             try:
                 self.rows = int(input("Number of rows: "))
-                while self.rows < 2 or self.rows > 101:
-                    self.rows = int(input("Please enter a number between 2 and 100: "))
+                while self.rows < 2 or self.rows > 31:
+                    self.rows = int(input("Please enter a number between 2 and 30: "))
                 break
             except ValueError:
                 print("Please enter a number!")
@@ -34,8 +30,8 @@ class executive:
         while True:
             try:
                 self.cols = int(input("Number of columns: "))
-                while self.cols < 2 or self.cols > 101:
-                    self.cols = int(input("Please enter a number between 2 and 100: "))
+                while self.cols < 2 or self.cols > 21:
+                    self.cols = int(input("Please enter a number between 2 and 20: "))
                 break
             except ValueError:
                 print("Please enter a number!")
