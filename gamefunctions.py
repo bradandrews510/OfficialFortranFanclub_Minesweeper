@@ -53,7 +53,7 @@ def board_create(grid):
     return
 
 def adjacent(grid, rows, cols):
-    if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True:
+    if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True or grid.board[rows][cols].isMined==True:
         return
 
     grid.board[rows][cols].set_num_adj_mines(int(grid.board[rows][cols].numAdjacent)+1)
@@ -88,9 +88,9 @@ def game_over(gameSurface):
     DISPLAYSURFACE = gameSurface; #Testing purposes
     BASICFONT = pygame.font.SysFont('None', 30)
     TEXTFONT = pygame.font.SysFont('None', 40)
-    RESET_SURF, RESET_RECT = drawButton('New Game', (0, 0, 0), (225, 225, 225), 300/3, 200*.75)
-    QUIT_SURF, QUIT_RECT = drawButton('Quit', (0, 0, 0), (225, 225, 225), 300*.75, 200*.75)
-    MENU_SURF = pygame.Surface((300,200))
+    RESET_SURF, RESET_RECT = drawButton('New Game', (0, 0, 0), (225, 225, 225), 200/3, 100*.75)
+    QUIT_SURF, QUIT_RECT = drawButton('Quit', (0, 0, 0), (225, 225, 225), 200*.75, 100*.75)
+    MENU_SURF = pygame.Surface((200,100))
     MENU_RECT = placeSurface(MENU_SURF, DISPLAYSURFACE.get_width()/2, DISPLAYSURFACE.get_height()/2)
 
     RESET_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
@@ -110,7 +110,7 @@ def game_over(gameSurface):
 
         DISPLAYSURFACE.blit(MENU_SURF, MENU_RECT)
         MENU_SURF.fill((255,255,255))
-        drawText("Game Over", TEXTFONT, ((0,0,0)), MENU_SURF, 300*.5, 200*.25)
+        drawText("Game Over", TEXTFONT, ((0,0,0)), MENU_SURF, 200*.5, 100*.25)
 
         DISPLAYSURFACE.blit(RESET_SURF, RESET_RECT)
         DISPLAYSURFACE.blit(QUIT_SURF, QUIT_RECT)
