@@ -8,16 +8,17 @@ from Cell import *
 def recReveal(grid, rows, cols):
 
     if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True:
-        return
+        return False
 
     grid.board[rows][cols].set_revealed()
 
-
     if grid.board[rows][cols].get_cell_textRep()=='M':
-        print("game over")
+        print("Stop point- ", rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
+        return True
 
     elif grid.board[rows][cols].get_cell_textRep()!='-':
         print("Stop point- ", rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
+        return False
 
     elif grid.board[rows][cols].get_cell_textRep()=='-':
         print(rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
@@ -30,7 +31,8 @@ def recReveal(grid, rows, cols):
         recReveal(grid, rows+1, cols-1)
         recReveal(grid, rows, cols-1)
 
-    return
+
+    return False
 
 def board_create(grid):
     #print(grid.get_height(), " by ", grid.get_width())
@@ -81,7 +83,7 @@ def game_over(gameSurface):
 
     # pygame.init()  #Testing purposes
     # pygame.display.set_caption('Minesweeper')  #Testing purposes
-    DISPLAYSIZE = screen.get_size();
+    DISPLAYSIZE = gameSurface.get_size();
     FPSCLOCK = pygame.time.Clock()  #Testing purposes
     DISPLAYSURFACE = gameSurface; #Testing purposes
     BASICFONT = pygame.font.SysFont('None', 30)
@@ -96,10 +98,11 @@ def game_over(gameSurface):
 
     mouse_x = 0
     mouse_y = 0
+    running = true
 
     #DISPLAYSURFACE.fill((0,0,0))
 
-    while True:
+    while(running):
         mouseClicked = False
         spacePressed = False
 
@@ -125,7 +128,9 @@ def game_over(gameSurface):
         if RESET_RECT.collidepoint(mouse_x, mouse_y):
             highlightButton(DISPLAYSURFACE, RESET_RECT)
             if mouseClicked:
-                print("New Game")
+                start_game()
+                running = false;
+
 
         # check if show box is clicked
         if QUIT_RECT.collidepoint(mouse_x, mouse_y):
