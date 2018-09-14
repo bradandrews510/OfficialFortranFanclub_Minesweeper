@@ -18,6 +18,7 @@ class executive:
         #add checks for valid input
         game = new_game(rows, cols, mines)
         game.start_game()
+        game.run_game()
 
 exec = executive()
 exec.run()
