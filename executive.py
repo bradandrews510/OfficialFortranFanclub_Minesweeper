@@ -9,7 +9,7 @@ class executive:
     def run(self):
         print("WELCOME TO MINESWEEPER!")
 
-<<<<<<< HEAD
+
         while True:
 
             self.get_input()
@@ -20,10 +20,7 @@ class executive:
             # game.start_game()
             # game.run_game()
             start_game(self.rows, self.cols, self.mines)
-=======
-        self.get_input()
-        start_game(self.rows, self.cols, self.mines)
->>>>>>> 536656135a6f17aa7a1bec72cf15a65e7c0c1a06
+
 
     def get_input(self):
         while True:

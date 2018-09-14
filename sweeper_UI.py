@@ -217,9 +217,11 @@ class minesweeper_gui:
 
                     pygame.display.update()
                 if(mine_hit):
-                    mine_hit = False
+                    #mine_hit = False
+                    print("THE NEW GAME WAS Not PRESSED YET----------")
                     game_over(gameDisplay)
                     print("THE NEW GAME WAS PRESSED----------")
+
 def start_game(rows,cols,mines):
     pygame.quit()
     '''
