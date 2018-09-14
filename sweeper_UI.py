@@ -5,13 +5,37 @@ Cell Grid, New game, help, quit buttons functionality
 import pygame
 import sys
 import math
+#import gamefunctions
 #import Board
 #import recReveal
 
 #cell and flag images 20x20
+revealed_image = pygame.image.load("tile.png")
 cell_image = pygame.image.load("cell_image.png")
-flag_image = pygame.image.load("cell_flag.png")
+flag_image = pygame.image.load("flag_tile.png")
+one_image = pygame.image.load("one_tile.png")
+two_image = pygame.image.load("two_tile.png")
+three_image = pygame.image.load("three_tile.png")
+four_image = pygame.image.load("four_tile.png")
+five_image = pygame.image.load("five_tile.png")
+six_image = pygame.image.load("six_tile.png")
+seven_image = pygame.image.load("seven_tile.png")
+eight_image = pygame.image.load("eight_tile.png")
+mine_image = pygame.image.load("mine_tile.png")
+
 cell_size = 20
+cell_contents = {
+    '1' : one_image,
+    '2' : two_image,
+    '3' : three_image,
+    '4' : four_image,
+    '5' : five_image,
+    '6' : six_image,
+    '7' : seven_image,
+    '8' : eight_image,
+    'M' : mine_image,
+    '-' : revealed_image
+}
 
 class cell_button:
     """
@@ -91,6 +115,9 @@ def reveal(row,col):
     @return None
 """
 
+#def reveal(row,col):
+
+
 class minesweeper_gui:
         '''
         def draw_buttons(self):
@@ -141,8 +168,8 @@ class minesweeper_gui:
 
                 new_game_button = gui_button((255,255,255), 0, 0, button_width, 40, "New Game", new_game)
                 new_game_button.draw(gameDisplay, 1)
-                help_button = gui_button((255,255,255),0 + button_width, 0, button_width / 2, 40, "Help", help)
-                help_button.draw(gameDisplay, 1)
+                #help_button = gui_button((255,255,255),0 + button_width, 0, button_width / 2, 40, "Help", help)
+                #help_button.draw(gameDisplay, 1)
                 quit_button = gui_button((255,255,255),display_width - button_width/2, 0, button_width/2, 40, "Quit", quit_game)
                 quit_button.draw(gameDisplay, 1)
                 flags_button = gui_button((255,255,255),display_width - (button_width * 2.5), 0, button_width + button_width, 40, "Flags remaining: " + str(flags))
@@ -156,23 +183,18 @@ class minesweeper_gui:
                             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                                     mouse_pos = pygame.mouse.get_pos()
                                     m_rect = pygame.rect.Rect(mouse_pos, (1, 1))
-                                    print(event)
                                     #on left click check for button press
                                     if(new_game_button.rect.colliderect(m_rect)):
                                         new_game_button.clicked()
-                                    elif (help_button.rect.colliderect(m_rect)):
-                                        help_button.clicked()
+                                    #elif (help_button.rect.colliderect(m_rect)):
+                                        #help_button.clicked()
                                     elif (quit_button.rect.colliderect(m_rect)):
                                         quit_button.clicked()
                                     else:
-                                        print("we in this")
                                         #check mouse collide with list of cells
                                         for row in range(rows):
                                             for cell in cell_list[row]:
                                                 if (cell.rect.colliderect(m_rect)):
-                                                    print("We collide")
-                                                    print(cell.is_flagged)
-                                                    print(cell.is_revealed)
                                                     if cell.is_flagged == False:
                                                         #if not flagged, turn revealed to true
                                                         cell.is_revealed = True
@@ -191,18 +213,20 @@ class minesweeper_gui:
                                                         cell.is_flagged = False
                                                         flags += 1
                                                     else:
-                                                        cell.is_flagged = True
-                                                        flags -= 1
+                                                        if(flags > 0):
+                                                            cell.is_flagged = True
+                                                            flags -= 1
                                                     flags_button.text = "Flags remaining: " + str(flags)
                                                     flags_button.draw(gameDisplay, 1)
                     for row in range(rows):
                         for cell in cell_list[row]:
                             if cell.is_revealed:
-                                gameDisplay.blit(white, (cell.x * cell_size, 40 + cell.y * cell_size))
+                                gameDisplay.blit(revealed_image, (cell.x * cell_size, 40 + cell.y * cell_size))
                             elif cell.is_flagged:
                                 gameDisplay.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
                             else:
                                 gameDisplay.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
+
 
                     pygame.display.update()
 
@@ -217,5 +241,8 @@ def start_game():
     cols = int(input("Columns: "))
     mines = int(input("Mines: "))
     ms.gui_start(rows, cols, mines)
+    '''
+
+    '''
 
 start_game()
