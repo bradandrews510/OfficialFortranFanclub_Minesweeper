@@ -26,6 +26,8 @@ class Cell:
         # n: The number of adjacent mines. Can only occurs when isMined == False
         self.textRep = '-'
 
+    ''' Get functions '''
+
     def get_num_adj(self):
         return int(self.numAdjacent)
 
@@ -33,6 +35,8 @@ class Cell:
         self.isMined = True
         self.textRep = 'M'
 
+    ''' Set functions '''
+    
     # Toggle the isFlagged flag
     """ @post   Toggles the isFlagged state
         @return 0 indicates nothing was done, -1 means the cell was unflagged,
