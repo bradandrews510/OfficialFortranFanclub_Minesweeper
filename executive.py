@@ -25,8 +25,8 @@ class executive:
         while True:
             try:
                 self.rows = int(input("Number of rows: "))
-                while self.rows < 2:
-                    self.rows = int(input("Please enter a number greater than 1: "))
+                while self.rows < 2 or self.rows > 101:
+                    self.rows = int(input("Please enter a number between 2 and 100: "))
                 break
             except ValueError:
                 print("Please enter a number!")
@@ -34,8 +34,8 @@ class executive:
         while True:
             try:
                 self.cols = int(input("Number of columns: "))
-                while self.cols < 2:
-                    self.cols = int(input("Please enter a number greater than 1: "))
+                while self.cols < 2 or self.cols > 101:
+                    self.cols = int(input("Please enter a number between 2 and 100: "))
                 break
             except ValueError:
                 print("Please enter a number!")
