@@ -2,6 +2,7 @@
 Cell Grid, New game, help, quit buttons functionality
 
 """
+import gc
 import pygame
 import sys
 import math
@@ -128,6 +129,7 @@ class minesweeper_gui:
                 flags = mines
                 min_width = 320
                 min_height = 240
+                remaining = rows * cols - mines
 
                 if(cols * cell_size < min_width):
                     display_width = min_width
@@ -161,8 +163,9 @@ class minesweeper_gui:
                 flags_button = gui_button((255,255,255),display_width - (button_width * 2.5), 0, button_width + button_width, 40, "Flags remaining: " + str(flags))
                 flags_button.draw(gameDisplay, 1)
                 mine_hit = False
-                while(mine_hit != True):
 
+                while(mine_hit != True):
+                    count = 0
                     for event in pygame.event.get():
                             if event.type == pygame.QUIT:
                                     running = False
@@ -207,12 +210,16 @@ class minesweeper_gui:
                     for row in range(rows):
                         for cell in cell_list[row]:
                             if cell.m_cell.isRevealed:
+                                count += 1
                                 gameDisplay.blit(cell_contents[gB.board[cell.y][cell.x].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
                             elif cell.m_cell.isFlagged:
                                 gameDisplay.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
                             else:
                                 gameDisplay.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
-
+                    if(count == remaining):
+                        print("WIN GAME STUFF HERE")
+                        pygame.quit()
+                        sys.exit()
 
 
                     pygame.display.update()
