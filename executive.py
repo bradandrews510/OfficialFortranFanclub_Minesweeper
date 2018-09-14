@@ -26,8 +26,8 @@ class executive:
         while True:
             try:
                 self.cols = int(input("Number of columns: "))
-                while self.cols < 2 or self.cols > 20:
-                    self.cols = int(input("Please enter a number between 2 and 20: "))
+                while self.cols < 2 or self.cols > 40:
+                    self.cols = int(input("Please enter a number between 2 and 40: "))
                 break
             except ValueError:
                 print("Please enter a number!")
