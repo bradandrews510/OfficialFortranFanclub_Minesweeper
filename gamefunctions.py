@@ -49,6 +49,7 @@ def board_create(grid):
                 adjacent(grid, rows+1, cols-1)
                 adjacent(grid, rows, cols-1)
 
+    grid.print_board()
     return
 
 def adjacent(grid, rows, cols):
@@ -83,7 +84,6 @@ def game_over(gameSurface):
 
     # pygame.init()  #Testing purposes
     # pygame.display.set_caption('Minesweeper')  #Testing purposes
-    DISPLAYSIZE = gameSurface.get_size();
     FPSCLOCK = pygame.time.Clock()  #Testing purposes
     DISPLAYSURFACE = gameSurface; #Testing purposes
     BASICFONT = pygame.font.SysFont('None', 30)
@@ -91,14 +91,14 @@ def game_over(gameSurface):
     RESET_SURF, RESET_RECT = drawButton('New Game', (0, 0, 0), (225, 225, 225), 300/3, 200*.75)
     QUIT_SURF, QUIT_RECT = drawButton('Quit', (0, 0, 0), (225, 225, 225), 300*.75, 200*.75)
     MENU_SURF = pygame.Surface((300,200))
-    MENU_RECT = placeSurface(MENU_SURF, DISPLAYSIZE.x/2, DISPLAYSIZE.y/2)
+    MENU_RECT = placeSurface(MENU_SURF, DISPLAYSURFACE.get_width()/2, DISPLAYSURFACE.get_height()/2)
 
     RESET_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
     QUIT_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
 
     mouse_x = 0
     mouse_y = 0
-    running = true
+    running = True
 
     #DISPLAYSURFACE.fill((0,0,0))
 
@@ -129,7 +129,7 @@ def game_over(gameSurface):
             highlightButton(DISPLAYSURFACE, RESET_RECT)
             if mouseClicked:
                 start_game()
-                running = false;
+                running = False;
 
 
         # check if show box is clicked
@@ -144,7 +144,7 @@ def game_over(gameSurface):
 
 def drawButton(text, textColor, backgroundColor, center_x, center_y):
 
-    butSurf = BASICFONT.render(text, True, textColor, backgroundcolor)
+    butSurf = BASICFONT.render(text, True, textColor, backgroundColor)
     buttonRect = butSurf.get_rect()
     buttonRect.centerx = center_x
     buttonRect.centery = center_y
@@ -157,7 +157,7 @@ def placeSurface(screen, center_x, center_y):
     surfRect.centerx = center_x
     surfRect.centery = center_y
 
-    return newRect
+    return surfRect
 
 def drawText(text, font, color, surface, x, y):
 
@@ -165,7 +165,7 @@ def drawText(text, font, color, surface, x, y):
     textRect = textSurf.get_rect()
     textRect.centerx = x
     textRect.centery = y
-    surface.blit(textobj, textrect)
+    surface.blit(textSurf, textRect)
 
 def highlightButton(screen, buttonRect):
 
