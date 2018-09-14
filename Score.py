@@ -1,3 +1,11 @@
+''' Author: Edmundo Daniel Hidalgo
+    Project 1
+    Score.py
+
+    Score.py should only save, read, and return the score data
+'''
+
+
 import sys
 import os
 import io

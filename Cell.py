@@ -2,6 +2,17 @@
    Cell class?
 """
 
+''' Author: Edmundo Daniel Hidalgo
+    Project 1
+    Cell.py
+
+    Cell.py should only store the data for a single specific cell and offer a
+    way to change or get that data
+
+    One possibility is to set this as a parent class and then allow for
+    inheritance based on the specific game's needs
+'''
+
 class Cell:
     def __init__(self):
         # The default cell is completely blank

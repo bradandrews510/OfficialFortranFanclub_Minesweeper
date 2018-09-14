@@ -2,6 +2,23 @@
    Game Board... this file or the class needs to be renamed
 """
 
+''' Author: Edmundo Daniel Hidalgo
+    Project 1
+    Board.py
+
+    Board.py creates an mxn array and offers functions that allow the direct
+    access of individual elements ('cells') within the board. It will also
+    return the various attributes for the board (width, height, etc)
+
+    TODO: I think we should move place_mines() to GameLogic.py since placing
+    mines is not a fundamental feature of the board. Instead, Board.py should
+    only offer a way to move around the board such that placing the mines
+    is possible
+
+    Alternatively, we can have Board be a parent and then any game we decide
+    to make afterwards will inherit and extend the board class
+'''
+
 # Imports
 import random
 
