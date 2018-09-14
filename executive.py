@@ -13,8 +13,18 @@ class executive:
         """
         print("WELCOME TO MINESWEEPER!")
 
-        self.get_input()
-        start_game(self.rows, self.cols, self.mines)
+
+        while True:
+
+            self.get_input()
+
+            #self.mines = int(input("Number of mines: "))
+            #add checks for valid input
+            # game = new_game(self.rows, self.cols, self.mines)
+            # game.start_game()
+            # game.run_game()
+            start_game(self.rows, self.cols, self.mines)
+
 
     def get_input(self):
         """ Gets valid input from user.
