@@ -1,9 +1,10 @@
 import pygame
-#from sweeper_UI import ms_buttons
-#from Board.py import GameBoard
+from sweeper_UI import ms_buttons
+#from Board import GameBoard
 
 # drawing background gameboard
 # initialization and start game
+# detect mouse clicks, update graphics based on revealed board
 
 class new_game:
     m_rows = 0
@@ -38,6 +39,9 @@ class new_game:
                 screen.blit(image, (x*20,y*20))
                 pygame.display.flip()
 
+        self.run_game();
+
+    def run_game(self):
         running = True
 
         while running:
