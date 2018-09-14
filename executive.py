@@ -11,19 +11,13 @@ class executive:
         print("WELCOME TO MINESWEEPER!")
 
         self.get_input()
-
-        #self.mines = int(input("Number of mines: "))
-        #add checks for valid input
-        # game = new_game(self.rows, self.cols, self.mines)
-        # game.start_game()
-        # game.run_game()
         start_game(self.rows, self.cols, self.mines)
 
     def get_input(self):
         while True:
             try:
                 self.rows = int(input("Number of rows: "))
-                while self.rows < 2 or self.rows > 31:
+                while self.rows < 2 or self.rows > 30:
                     self.rows = int(input("Please enter a number between 2 and 30: "))
                 break
             except ValueError:
@@ -32,7 +26,7 @@ class executive:
         while True:
             try:
                 self.cols = int(input("Number of columns: "))
-                while self.cols < 2 or self.cols > 21:
+                while self.cols < 2 or self.cols > 20:
                     self.cols = int(input("Please enter a number between 2 and 20: "))
                 break
             except ValueError:
