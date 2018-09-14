@@ -4,8 +4,10 @@
 
 # Imports
 import random
+from gamefunctions import *
 
 from Cell import *
+
 
 # GameBoard class
 class Board:
@@ -21,6 +23,7 @@ class Board:
         # Go through the process of generating the board
         self.generate_board()
         self.place_mines()
+        board_create(self)
 
     '''
         GET FUNCTIONS
@@ -135,6 +138,11 @@ class Board:
 
             row = []
 
+print("2x2 with 2 mines")
+tB = Board(5,5,5)
+tB.print_board()
+recReveal(tB, 0, 0)
+
 # # TESTING CODE
 # print("2x2 with 2 mines")
 # tB = GameBoard(2, 2, 2)
@@ -159,7 +167,7 @@ class Board:
 # bB.print_board()
 # recReveal(bB, 0, 0)
 #
-# 
+#
 # print("\n\n")
 #
 # print("6x4 with 1 mine")
