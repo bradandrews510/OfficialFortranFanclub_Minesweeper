@@ -1,5 +1,6 @@
-
-#executive to run self.minesweeper
+"""@package docstring
+   Executive - will run the minesweeper game
+"""
 
 import pygame
 from sweeper_UI import *
@@ -7,12 +8,18 @@ from sweeper_UI import *
 class executive:
 
     def run(self):
+        """ Runs the game.
+        
+        """
         print("WELCOME TO MINESWEEPER!")
 
         self.get_input()
         start_game(self.rows, self.cols, self.mines)
 
     def get_input(self):
+        """ Gets valid input from user.
+        Rows, cols and mines
+        """
         while True:
             try:
                 self.rows = int(input("Number of rows: "))
