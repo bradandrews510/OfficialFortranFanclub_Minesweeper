@@ -2,23 +2,42 @@
    Game Board... this file or the class needs to be renamed
 """
 
+''' Author: Edmundo Daniel Hidalgo
+    Project 1
+    Board.py
+
+    Board.py creates an mxn array and offers functions that allow the direct
+    access of individual elements ('cells') within the board. It will also
+    return the various attributes for the board (width, height, etc)
+
+    TODO: I think we should move place_mines() to GameLogic.py since placing
+    mines is not a fundamental feature of the board. Instead, Board.py should
+    only offer a way to move around the board such that placing the mines
+    is possible
+
+    Alternatively, we can have Board be a parent and then any game we decide
+    to make afterwards will inherit and extend the board class
+'''
+
 # Imports
 import random
+
+from Cell import *
 
 # GameBoard class
 class GameBoard:
 
     # Initialize a game board
-    def __init__(self, width, height, numOfMines):
+    def __init__(self, width, height, numOfMines): # Remove # of mines
 
         # Store the height, width, and number of mines
         self.width  = width
         self.height = height
-        self.numOfMines = numOfMines
+        self.numOfMines = numOfMines # Move this to game logic
 
         # Go through the process of generating the board
         self.generate_board()
-        self.place_mines()
+#        self.place_mines() # Move this to the game logic
 
     '''
         GET FUNCTIONS
@@ -52,38 +71,28 @@ class GameBoard:
             @post   Generates the game board...
             @return None
         """
-        print("In generate_board")
+        #print("In generate_board")
 
         # Generate a blank board
-        self.board = [['-' for j in range(0, self.width)] for i in range(0, self.height)]
-
+        self.board = [[Cell() for j in range(0, self.width)] for i in range(0, self.height)]
+'''
     # Place mines
     def place_mines(self):
         """ @pre    The number of mines n is valid
             @post   Populates the game board with n mines
             @return None
         """
-        print("In place_mines")
+        #print("In place_mines")
 
         mCounter = self.numOfMines
         while mCounter > 0:
             i = random.randint(0, self.height - 1)
             j = random.randint(0, self.width  - 1)
 
-            if self.board[i][j] == '-':
-                self.board[i][j] = 'M'
+            if self.board[i][j].isMined == False:
+                self.board[i][j].set_mine()
                 mCounter = mCounter - 1
-
-    # Find and mark all the of the empty cells adjacent to a mine
-    # Should be renamed
-    def mark_adjacent(self):
-        """ @pre    None
-            @post   None
-            @return None
-        """
-        print("In mark_adjacent")
-
-
+'''
     '''
         MISC. FUNCTIONS
     '''
@@ -91,68 +100,128 @@ class GameBoard:
     # Return a dictionary with the accessible directions for some specific cell
     # This is a terrible name that needs to be updated
     def get_acces_by_cell(self, i, j):
-        accessibleDirections = {'U' : False, 'U_L' : False, 'U_R' : False,
-                      'D' : False, 'D_L' : False, 'D_R' : False,
-                      'L' : False, 'R'   : False}
+        #accessibleDirections = {'U' : False, 'U_L' : False, 'U_R' : False,
+                      #'D' : False, 'D_L' : False, 'D_R' : False,
+                      #'L' : False, 'R'   : False}
+
+        # List of accessible cells
+        aC = []
 
         # Up
         if ((i - 1) >= 0):
-            accessibleDirections['U'] = self.board[i-1][j]
+            aC.append(self.board[i-1][j])
+            #accessibleDirections['U'] = self.board[i-1][j]
 
         # Up Left
         if ((i - 1) >= 0) and ((j - 1) >= 0):
-            accessibleDirections['U_L'] = self.board[i-1][j-1]
+            aC.append(self.board[i-1][j-1])
+            #accessibleDirections['U_L'] = self.board[i-1][j-1]
 
         # Up Right
-        if ((i - 1) >= 0) and ((j + 1) < self.size):
-            accessibleDirections['U_R'] = self.board[i-1][j+1]
+        if ((i - 1) >= 0) and ((j + 1) < self.width):
+            aC.append(self.board[i-1][j+1])
+            #accessibleDirections['U_R'] = self.board[i-1][j+1]
 
         # Down
-        if (i + 1) < self.size:
-            accessibleDirections['D'] = self.board[i+1][j]
+        if (i + 1) < self.height:
+            aC.append(self.board[i+1][j])
+            #accessibleDirections['D'] = self.board[i+1][j]
 
         # Down Left
-        if ((i + 1) < self.size) and ((j - 1) >= 0):
-            accessibleDirections['D_L'] = self.board[i+1][j-1]
+        if ((i + 1) < self.height) and ((j - 1) >= 0):
+            aC.append(self.board[i+1][j-1])
+            #accessibleDirections['D_L'] = self.board[i+1][j-1]
 
         # Down Right
-        if ((i + 1) < self.size) and ((j + 1) < self.size):
-            accessibleDirections['D_R'] = self.board[i+1][j+1]
+        if ((i + 1) < self.height) and ((j + 1) < self.width):
+            aC.append(self.board[i+1][j+1])
+            #accessibleDirections['D_R'] = self.board[i+1][j+1]
 
         # Left
         if (j - 1) >= 0:
-            accessibleDirections['L'] = self.board[i][j-1]
+            aC.append(self.board[i][j-1])
+            #accessibleDirections['L'] = self.board[i][j-1]
 
         # Right
-        if (j + 1) < self.size:
-            accessibleDirections['R'] = self.board[i][j+1]
+        if (j + 1) < self.width:
+            aC.append(self.board[i][j+1])
+            #accessibleDirections['R'] = self.board[i][j+1]
 
-        return(accessibleDirections)
+        return(aC)
+        #return(accessibleDirections)
+
+
 
     # Print the board
     # FOR TESTING PURPOSES ONLY
     def print_board(self):
+        # For every row in the board, create a new (temporary) local array
+        # that will be filled with the text representation of the cell
+        # self.board[i][j]
         for i in self.board:
-            print(i)
+            row = []
+            for j in i:
+                row.append(j.get_cell_textRep())
+            print(row)
+
+def mark_adj(board):
+    for i in range(0, board.get_height()):
+        for j in range(0, board.get_width()):
+            if board.board[i][j].isMined == False:
+                # Work cell
+                wCell = board.board[i][j]
+                accessible = board.get_acces_by_cell(i, j)
+
+                for t in accessible:
+                    if t.isMined:
+                        wCell.set_num_adj_mines(wCell.get_num_adj() + 1)
+                        wCell.set_cell_textRep(str(wCell.get_num_adj()))
 
 
-
+'''
+                for t in accessible:
+                    if t.isMined:
+                        board.board[i][j].numAdjacent = board.board[i][j].numAdjacent + 1
+                    board.board[i][j].textRep = str(board.board[i][j].numAdjacent)
+'''
 
 # TESTING CODE
-tB = GameBoard(5, 2, 1)
+print("2x2 with 2 mines")
+tB = GameBoard(2, 2, 2)
+mark_adj(tB)
 tB.print_board()
 
-aB = GameBoard(3, 7, 1)
+print("\n\n")
+
+print("3x7 with 4 mines")
+aB = GameBoard(3, 7, 4)
+mark_adj(aB)
 aB.print_board()
 
-bB = GameBoard(4, 4, 1)
+print("\n\n")
+
+print("4x4 with 6 mines")
+bB = GameBoard(4, 4, 6)
+mark_adj(bB)
 bB.print_board()
 
+print("\n\n")
+
+print("6x4 with 1 mine")
 cB = GameBoard(6, 4, 1)
+mark_adj(cB)
 cB.print_board()
 
-dB = GameBoard(4, 5, 1)
+print("\n\n")
+
+print("4x5 with 7 mines")
+dB = GameBoard(4, 5, 7)
+mark_adj(dB)
 dB.print_board()
 
-eB = GameBoard(5, 5, 1)
+print("\n\n")
+
+print("5x5 with 3 mines")
+eB = GameBoard(5, 5, 3)
+mark_adj(eB)
 eB.print_board()
