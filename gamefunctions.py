@@ -13,6 +13,7 @@ def recReveal(grid, rows, cols):
     grid.board[rows][cols].set_revealed()
 
     if grid.board[rows][cols].get_cell_textRep()=='M':
+        print("Stop point- ", rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
         return True
 
     elif grid.board[rows][cols].get_cell_textRep()!='-':
