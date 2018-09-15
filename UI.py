@@ -10,6 +10,8 @@ from Board import *
 from Cell import Cell
 from AssetManager import *
 
+from Button import Button
+
 # Parameters: Image, screen?
 # Add error checking
 
@@ -64,11 +66,20 @@ def draw_new_game_menu(pygCanvas):
 
     # Label: Enter rows
     draw_label("Enter the number of rows: ", coreFont, WHITE, pygCanvas, 0, 0)
+    # Text entry for row input
 
     # Label: Enter columns
     draw_label("Enter the number of columns : ", coreFont, WHITE, pygCanvas, 0, 25)
+    # Text entry for column input
+
+    # Label: Enter mines
+    # Text entry for column input
 
     # Create buttons and text entry stuff
+    pygCanvas.blit(butNewGame, (0, 400)) # Hardcoded position
+    pygCanvas.blit(butQuit,  (560, 400)) # Hardcoded position
+
+
 
 ''' Sydney
 #def draw_minesweer_board(pygCanvas):

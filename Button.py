@@ -1,3 +1,5 @@
+from AssetManager import * # Imports need to be checked
+
 # The base button class
 class Button:
     def __init__(self, width, height, xPos, yPos, image):
@@ -28,6 +30,13 @@ class Button:
         def get_image(self):
             return self.image
 
+        # Generic button functions
+        def left_click(self):
+            print("Left click")
+
+        def right_click(self):
+            print("Not left click")
+
 # Value they had for buttons ***
 button_width = 80
 
@@ -38,9 +47,9 @@ button_width = 80
 # Quit
 
 # New Game buttons
-new_game_button = gui_button((255,255,255), 0, 0, button_width, 40, "New Game", start_game)
-new_game_button.draw(gameDisplay, 1)
+#new_game_button = gui_button((255,255,255), 0, 0, button_width, 40, "New Game", start_game)
+#new_game_button.draw(gameDisplay, 1)
 
 # Quit button
-quit_button = gui_button((255,255,255),display_width - button_width/2, 0, button_width/2, 40, "Quit", quit_game)
-quit_button.draw(gameDisplay, 1)
+#quit_button = gui_button((255,255,255),display_width - button_width/2, 0, button_width/2, 40, "Quit", quit_game)
+#quit_button.draw(gameDisplay, 1)
