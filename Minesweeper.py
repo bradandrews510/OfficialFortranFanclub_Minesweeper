@@ -2,10 +2,13 @@
 
 # Core imports
 import pygame as pyg # We can now write pyg instead of pygame
+import sys #To close window and end program
 
 # Imports of our group's code
 from UI import *
 from EventHandler import *
+
+
 
 
 # Init game
@@ -35,6 +38,9 @@ while True:
     # Events
     events = pyg.event.get()
     for e in events:
+        if e.type == pyg.QUIT:
+            pygame.quit()
+            sys.exit()
         if e.type == pyg.KEYDOWN:
             # Keep a buffer of what the person is doing
             key_press(e)
