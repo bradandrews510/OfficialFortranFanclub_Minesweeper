@@ -1,12 +1,9 @@
-import pygame, sys, time, random
 from pygame.locals import *
-import random
 
 from Board import *
-from Cell import *
+
 
 def recReveal(grid, rows, cols):
-
     if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True:
         return False
 
@@ -31,26 +28,8 @@ def recReveal(grid, rows, cols):
         recReveal(grid, rows+1, cols-1)
         recReveal(grid, rows, cols-1)
 
-
     return False
 
-def board_create(grid):
-    #print(grid.get_height(), " by ", grid.get_width())
-    for rows in range(grid.get_height()):
-        for cols in range(grid.get_width()):
-            #print(rows, ":", cols)
-            if grid.board[rows][cols].textRep=='M':
-                adjacent(grid, rows-1, cols-1)
-                adjacent(grid, rows-1, cols)
-                adjacent(grid, rows-1, cols+1)
-                adjacent(grid, rows, cols+1)
-                adjacent(grid, rows+1, cols+1)
-                adjacent(grid, rows+1, cols)
-                adjacent(grid, rows+1, cols-1)
-                adjacent(grid, rows, cols-1)
-
-    grid.print_board()
-    return
 
 def adjacent(grid, rows, cols):
     if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True or grid.board[rows][cols].isMined==True:
@@ -60,23 +39,7 @@ def adjacent(grid, rows, cols):
     grid.board[rows][cols].textRep=grid.board[rows][cols].numAdjacent
     return
 
-#places the mines
-def place_mines(grid, numofMines):
-    """ @pre    The number of mines n is valid
-        @post   Populates the game board with n mines
-        @return None
-    """
-    #print("In place_mines")
-
-    mCounter = numofMines
-    while mCounter > 0:
-        i = random.randint(0, grid.height - 1)
-        j = random.randint(0, grid.width  - 1)
-
-        if grid.board[i][j].isMined == False:
-            grid.board[i][j].set_mine()
-            mCounter = mCounter - 1
-
+''' Nathan '''
 def game_over(gameSurface):
     print("ENTERED GAME_OVER----------")
     global FPSCLOCK, DISPLAYSURFACE  #Testing purposes
@@ -127,15 +90,7 @@ def game_over(gameSurface):
         DISPLAYSURFACE.blit(RESET_SURF, RESET_RECT)
         DISPLAYSURFACE.blit(QUIT_SURF, QUIT_RECT)
 
-        for event in pygame.event.get():
-            if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
-                pygame.quit()
-                sys.exit()
-            elif event.type == MOUSEMOTION:
-                mouse_x, mouse_y = event.pos
-            elif event.type == MOUSEBUTTONDOWN:
-                mouse_x, mouse_y = event.pos
-                mouseClicked = True
+
 
         if RESET_RECT.collidepoint(mouse_x, mouse_y):
             highlightButton(DISPLAYSURFACE, RESET_RECT)
@@ -154,14 +109,6 @@ def game_over(gameSurface):
         pygame.display.update()
         FPSCLOCK.tick(30)
 
-def drawButton(text, textColor, backgroundColor, center_x, center_y):
-
-    butSurf = BASICFONT.render(text, True, textColor, backgroundColor)
-    buttonRect = butSurf.get_rect()
-    buttonRect.centerx = center_x
-    buttonRect.centery = center_y
-
-    return (butSurf, buttonRect)
 
 def placeSurface(screen, center_x, center_y):
 
@@ -170,23 +117,3 @@ def placeSurface(screen, center_x, center_y):
     surfRect.centery = center_y
 
     return surfRect
-
-def drawText(text, font, color, surface, x, y):
-
-    textSurf = font.render(text, True, color)
-    textRect = textSurf.get_rect()
-    textRect.centerx = x
-    textRect.centery = y
-    surface.blit(textSurf, textRect)
-
-def highlightButton(screen, buttonRect):
-
-    linewidth = 4
-    pygame.draw.rect(screen, (0, 128, 0), (buttonRect.left-linewidth, buttonRect.top-linewidth, buttonRect.width+2*linewidth, buttonRect.height+2*linewidth), linewidth)
-
-print("2x2 with 2 mines")
-tB = Board(5,5)
-place_mines(tB,5)
-board_create(tB)
-tB.print_board()
-recReveal(tB, 0, 0)

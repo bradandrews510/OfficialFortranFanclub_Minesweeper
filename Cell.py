@@ -8,6 +8,7 @@ class Cell:
         self.isMined     = False
         self.isFlagged   = False
         self.isRevealed  = False
+
         self.numAdjacent = 0
 
         # This is the text representation of what's in the cell
@@ -15,6 +16,16 @@ class Cell:
         # n: The number of adjacent mines. Can only occurs when isMined == False
         self.textRep = '-'
 
+        # The default image will be a regular cell
+        self.image = "default..."
+
+    ''' GET FUNCTIONS '''
+
+    def get_cell_textRep(self):
+        return self.textRep
+
+
+    ''' SET FUNCTIONS '''
     def set_mine(self):
         self.isMined = True
         self.textRep = 'M'
@@ -50,5 +61,25 @@ class Cell:
         # representations as the same data type
         self.numAdjacent = str(nMines)
 
-    def get_cell_textRep(self):
-        return self.textRep
+
+
+
+
+''' Their stuff ***
+
+#cell and flag images 20x20
+
+cell_size = 20
+cell_contents = {
+    '1' : one_image,
+    '2' : two_image,
+    '3' : three_image,
+    '4' : four_image,
+    '5' : five_image,
+    '6' : six_image,
+    '7' : seven_image,
+    '8' : eight_image,
+    'M' : mine_image,
+    '-' : revealed_image
+}
+'''
