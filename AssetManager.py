@@ -1,33 +1,44 @@
 # Asset Manager
-'''
-import sys
+
 import os
 
+# I'm not sure how to handle imports better... or if it's even possible
+import pygame
 
-revealed_image = pygame.image.load("tile.png")
-cell_image = pygame.image.load("cell_image.png")
-flag_image = pygame.image.load("flag_tile.png")
-
-TILE_ONE_IMG   = pygame.image.load("one_tile.png")
-TILE_TWO_IMG   = pygame.image.load("two_tile.png")
-TILE_THREE_IMG = pygame.image.load("three_tile.png")
-TILE_FOUR_IMG  = pygame.image.load("four_tile.png")
-TILE_FIVE_IMG  = pygame.image.load("five_tile.png")
-TILE_SIX_IMG   = pygame.image.load("six_tile.png")
-TILE_SEVEN_IMG = pygame.image.load("seven_tile.png")
-TILE_EIGHT_IMG = pygame.image.load("eight_tile.png")
-
-mine_image = pygame.image.load("mine_tile.png")
+# This is currently only set up for PyGame images
+def load_asset(assetPath):
+    path = os.getcwd() + '/Resources/'
+    print(path + assetPath)
+    try:
+        asset = pygame.image.load(path + assetPath)
+        return asset
+    except:
+        print('Error. Take a guess')
 
 
-# Check to see if a directory exists
+''' We're loading all of our images here '''
+# Reference tilesNum[n] to get the tile_n image
+tilesNum = ['tile_0.png',
+            'tile_1.png',
+            'tile_2.png',
+            'tile_3.png',
+            'tile_4.png',
+            'tile_5.png',
+            'tile_6.png',
+            'tile_7.png',
+            'tile_8.png']
 
-# Once we know a directory works, try to load the files in it
-def load_resources():
-    print("Loading")
-'''
+for t in range(0, len(tilesNum)):
+    tilesNum[t] = load_asset(tilesNum[t])
 
-# Colors
+
+#tileRevealed = pygame.image.load("tile.png") I'm not sure what this should be
+tileCell = load_asset('tile_cell.png')
+tileFlag = load_asset('tile_flag.png')
+tileMine = load_asset('tile_mine.png')
+
+
+''' Color constants '''
 WHITE = (255, 255, 255)
 BLACK = (  0,   0,   0)
 GRAY  = (122, 122, 122)
