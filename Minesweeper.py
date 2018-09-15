@@ -5,6 +5,7 @@ import pygame as pyg # We can now write pyg instead of pygame
 
 # Imports of our group's code
 from UI import *
+from EventHandler import *
 
 
 # Init game
@@ -29,6 +30,17 @@ while True:
     # Create the board (once)
     #   Draw the board on the board rectangle
     #   Other game logic stuff
+
+
+    # Events
+    events = pyg.event.get()
+    for e in events:
+        if e.type == pyg.KEYDOWN:
+            # Keep a buffer of what the person is doing
+            key_press(e)
+
+        if e.type == pyg.MOUSEBUTTONDOWN:
+            user_is_clicking(e)
 
     # Keep updating the game window
     # This is just redrawing it? Updating it? I'm not sure

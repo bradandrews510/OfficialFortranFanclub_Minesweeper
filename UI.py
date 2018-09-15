@@ -64,13 +64,17 @@ def setup_display(pygDisplay):
 def draw_new_game_menu(pygCanvas):
     # A canvas where all the labels will be drawn
 
+    ''' WE HAVE A LOT OF HARDCODED VALUES. BE CAREFUL '''
+
     # Label: Enter rows
     draw_label("Enter the number of rows: ", coreFont, WHITE, pygCanvas, 0, 0)
     # Text entry for row input
+    draw_input_field(pygCanvas, 310, 0)
 
     # Label: Enter columns
-    draw_label("Enter the number of columns : ", coreFont, WHITE, pygCanvas, 0, 25)
+    draw_label("Enter the number of columns: ", coreFont, WHITE, pygCanvas, 0, 25)
     # Text entry for column input
+    draw_input_field(pygCanvas, 310, 25)
 
     # Label: Enter mines
     # Text entry for column input
@@ -117,3 +121,9 @@ def draw_label(text, font, color, pygCanvas, xPos, yPos):
 # have an entire function dedicated to them unless they _NEED_ to operate
 # differently than the other interactable components
 #def draw_button()
+
+# Add a "is_active?" check so that it blinks or changes somehow
+# to let you know which field you're in
+# Doesn't actually get user input yet
+def draw_input_field(pygCanvas, xPos, yPos):
+    draw_label('USER INPUT', coreFont, WHITE, pygCanvas, xPos, yPos)
