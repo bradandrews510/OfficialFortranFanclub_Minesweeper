@@ -54,11 +54,13 @@ class cell_button:
     """
     @pre cell object with draw, clicked, reveal, flag functions
     @post none
+    @return none
     """
     def __init__(self,x, y, width, height, cell):
         """
         @pre constructor for cell button object
         @post creates a rect at given location of given size
+        @return none
         """
         self.m_cell = cell
         self.rect = pygame.Rect(x * width,y * height + 40,width,height)
@@ -69,12 +71,15 @@ class cell_button:
 class gui_button:
     """
     @pre class for interface buttons (new game, quit, etc)
+    @post gui bottn made with click functionality
+    @return none
     """
 
     def __init__(self, color, x, y, width, height, text, action = None):
         """
-        @pre constructor for button object
+        @pre constructor for button object, called on declaration
         @post creates a rect at given location of given size
+        @return none
         """
         self.rect = pygame.rect.Rect(x,y,width,height)
         self.is_clicked = False
@@ -89,6 +94,8 @@ class gui_button:
     def clicked(self):
         """
         @pre called from main game loop to do associated action
+        @post execute associated functions
+        @return none
         """
         if(self.action != None):
             self.action()
@@ -111,22 +118,17 @@ class gui_button:
 def quit_game():
     """
     @pre called by quit buttons, quits game
+    @post game is quit
+    @return none
     """
     pygame.quit()
     quit()
 
-def help():
-    """
-    @pre help function called by help button
-    @post pop up message with instructions
-    """
-    print("Help")
-
-
-
 def reveal(gB, row,col):
     """
     @pre calls recReveal, return Tue if mine hit
+    @post recursively change cell isflagged value
+    @return True if mine is hit
     """
     return recReveal(gB,row,col)
 
@@ -137,6 +139,8 @@ class minesweeper_gui:
     def gui_start(gB, rows, cols, mines):
         """
         @pre start game loop by passing created board and board info
+        @post encompasses entire game loop
+        @return none
         """
 
         pygame.init()
@@ -268,6 +272,11 @@ class minesweeper_gui:
             pygame.display.update()
 
 def update_display(display, gB, cell_list,count,flagged_count):
+    """
+    @pre take display, game board, cell 2d array, and count and flagged count inputs
+    @post update each game cell
+    @return count and flagged count for game win checking
+    """
     flagged_count = 0
     for row in range(gB.get_height()):
         for cell in cell_list[row]:
@@ -288,6 +297,8 @@ def update_display(display, gB, cell_list,count,flagged_count):
 def start_game(rows,cols,mines):
     """
     @pre Creates board to pass along with board details to gui_start
+    @post runs gui_start to begin game loop
+    @return none
     """
     ms = minesweeper_gui
     gB = Board(cols,rows)
