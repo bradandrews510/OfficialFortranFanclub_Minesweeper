@@ -259,9 +259,9 @@ class minesweeper_gui:
                             cell.m_cell.set_revealed()
                     count, flagged_count = update_display(gameDisplay, gB, cell_list, count, flagged_count)
                     pygame.font.init()
-                    menu_but = gui_button(white,0,60, display_width,40, "YOU WIN!")
+                    menu_but = gui_button((0,204,0),0,0, display_width-button_width,40, "YOU WIN!")
                     menu_but.draw(gameDisplay, 1)
-                    quit_2 = gui_button(white,display_width/2 - button_width/2, display_height/2, button_width, 40, "Quit", quit_game)
+                    quit_2 = gui_button(white,display_width-button_width, 0, button_width, 40, "Quit", quit_game)
                     quit_2.draw(gameDisplay, 1)
                     quit_isdrawn = True
 
