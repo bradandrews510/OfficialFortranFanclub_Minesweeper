@@ -268,6 +268,7 @@ class minesweeper_gui:
             pygame.display.update()
 
 def update_display(display, gB, cell_list,count,flagged_count):
+    flagged_count = 0
     for row in range(gB.get_height()):
         for cell in cell_list[row]:
 
