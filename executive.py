@@ -8,8 +8,9 @@ from sweeper_UI import *
 class executive:
 
     def run(self):
-        """ Runs the game.
-
+        """
+        @pre none
+        @post runs a game
         """
         print("WELCOME TO MINESWEEPER!")
 
@@ -21,8 +22,9 @@ class executive:
 
 
     def get_input(self):
-        """ Gets valid input from user.
-        Rows, cols and mines
+        """
+        @pre none
+        @post sets rows, columns and mines equal to a valid user input (2 <= rows <= 30, 2 <= cols <= 40, 1 <= mines <= rows*cols -1)
         """
         while True:
             try:
