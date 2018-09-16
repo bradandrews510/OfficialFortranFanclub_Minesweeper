@@ -68,7 +68,7 @@ class cell_button:
 
 class gui_button:
     """
-    @class for interface buttons (new game, quit, etc)
+    @pre class for interface buttons (new game, quit, etc)
     """
 
     def __init__(self, color, x, y, width, height, text, action = None):
@@ -109,8 +109,11 @@ class gui_button:
             window.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
 
 def quit_game():
-        pygame.quit()
-        quit()
+    """
+    @pre called by quit buttons, quits game
+    """
+    pygame.quit()
+    quit()
 
 def help():
     """
@@ -131,153 +134,151 @@ def reveal(gB, row,col):
 
 class minesweeper_gui:
 
-        def gui_start(gB, rows, cols, mines):
-                """
-                @pre start game loop by passing created board and board info
-                """
+    def gui_start(gB, rows, cols, mines):
+        """
+        @pre start game loop by passing created board and board info
+        """
 
-                pygame.init()
-                pygame.font.init()
+        pygame.init()
+        pygame.font.init()
 
-                #for checking if user has flagged/revealed everything
-                flags = mines
-                remaining = rows * cols - mines
+        #for checking if user has flagged/revealed everything
+        flags = mines
+        remaining = rows * cols - mines
 
-                #dynamic board size
-                if(cols * cell_size < min_width):
-                    display_width = min_width
+        #dynamic board size
+        if(cols * cell_size < min_width):
+            display_width = min_width
 
-                else:
-                    display_width = cols * cell_size
+        else:
+            display_width = cols * cell_size
 
-                if(rows * cell_size < min_height):
-                    display_height = min_height
+        if(rows * cell_size < min_height):
+            display_height = min_height
 
-                else:
-                    display_height = 40 + rows * cell_size
+        else:
+            display_height = 40 + rows * cell_size
 
-                #display background
-                gameDisplay = pygame.display.set_mode((display_width, display_height))
-                gameDisplay.fill(black)
-                pygame.display.set_caption("Minesweeper")
+        #display background
+        gameDisplay = pygame.display.set_mode((display_width, display_height))
+        gameDisplay.fill(black)
+        pygame.display.set_caption("Minesweeper")
 
-                #create 2d array of cells, blit images
-                cell_list = [[0 for i in range(cols)] for j in range(rows)]
-                for row in range(rows):
-                    for column in range(cols):
-                        cell_list[row][column] = cell_button(column,row,cell_size,cell_size,gB.board[row][column])
-                        gameDisplay.blit(cell_image, (column * cell_size, 40 + row * cell_size))
+        #create 2d array of cells, blit images
+        cell_list = [[0 for i in range(cols)] for j in range(rows)]
+        for row in range(rows):
+            for column in range(cols):
+                cell_list[row][column] = cell_button(column,row,cell_size,cell_size,gB.board[row][column])
+                gameDisplay.blit(cell_image, (column * cell_size, 40 + row * cell_size))
 
-                quit_button = gui_button((204,0,0),display_width - button_width/2, 0, button_width/2, 40, "Quit", quit_game)
-                quit_button.draw(gameDisplay, 1)
+        quit_button = gui_button((204,0,0),display_width - button_width/2, 0, button_width/2, 40, "Quit", quit_game)
+        quit_button.draw(gameDisplay, 1)
 
-                flags_button = gui_button((0,204,0),0, 0, 2 * button_width, 40, "Flags remaining: " + str(flags))
-                flags_button.draw(gameDisplay, 1)
-                mine_hit = False
+        flags_button = gui_button((0,204,0),0, 0, 2 * button_width, 40, "Flags remaining: " + str(flags))
+        flags_button.draw(gameDisplay, 1)
+        mine_hit = False
 
-                while(mine_hit == False):
-                    #starting game loop
-                    count = 0
-                    flagged_count = 0
-                    for event in pygame.event.get():
+        while(mine_hit == False):
+            #starting game loop
+            count = 0
+            flagged_count = 0
+            for event in pygame.event.get():
 
-                            if event.type == pygame.QUIT:
-                                    running = False
-                                    pygame.quit()
-                                    sys.exit()
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+                    sys.exit()
 
-                            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                                    mouse_pos = pygame.mouse.get_pos()
-                                    m_rect = pygame.rect.Rect(mouse_pos, (1, 1))
+                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    mouse_pos = pygame.mouse.get_pos()
+                    m_rect = pygame.rect.Rect(mouse_pos, (1, 1))
 
-                                    if (quit_button.rect.colliderect(m_rect)):
-                                        quit_button.clicked()
+                    if (quit_button.rect.colliderect(m_rect)):
+                        quit_button.clicked()
 
-                                    else:
-                                        #check mouse collide with list of cells
-                                        for row in range(rows):
-                                            for cell in cell_list[row]:
+                    else:
+                        #check mouse collide with list of cells
+                        for row in range(rows):
+                            for cell in cell_list[row]:
 
-                                                if (cell.rect.colliderect(m_rect)):
+                                if (cell.rect.colliderect(m_rect)):
 
-                                                    if cell.m_cell.isFlagged == False:
-                                                        #if not flagged, turn revealed to true
-                                                        mine_hit = reveal(gB,cell.y,cell.x)
+                                    if cell.m_cell.isFlagged == False:
+                                        #if not flagged, turn revealed to true
+                                        mine_hit = reveal(gB,cell.y,cell.x)
 
-                                                        if(mine_hit):
-                                                            for row in range(rows):
-                                                                for cell in cell_list[row]:
-                                                                    cell.m_cell.set_revealed()
-                                                                    game_over(gameDisplay)
+                                        if(mine_hit):
+                                            for row in range(rows):
+                                                for cell in cell_list[row]:
+                                                    cell.m_cell.set_revealed()
+                                                    game_over(gameDisplay)
 
-                            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
-                                    #flag on right click
-                                    mouse_pos = pygame.mouse.get_pos()
-                                    m_rect = pygame.rect.Rect(mouse_pos,(1, 1))
+                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
+                    #flag on right click
+                    mouse_pos = pygame.mouse.get_pos()
+                    m_rect = pygame.rect.Rect(mouse_pos,(1, 1))
 
-                                    for row in range(rows):
-                                        for cell in cell_list[row]:
-
-                                            if cell.rect.colliderect(m_rect):
-
-                                                if cell.m_cell.isRevealed != True:
-
-                                                    if(cell.m_cell.isFlagged == True):
-                                                        #if cell is flagged, toggle and update flag counter
-                                                        flags += cell.m_cell.set_flag()
-
-                                                    else:
-                                                        #if cell is not flagged, toggle and update flag counter if flags > 0
-
-                                                        if(flags > 0):
-                                                            flags += cell.m_cell.set_flag()
-
-                                                    flags_button.text = "Flags remaining: " + str(flags)
-                                                    flags_button.draw(gameDisplay, 1)
-                    #below loop redraws game board after each user event (necessary in the case of revealing multiple cells)
                     for row in range(rows):
                         for cell in cell_list[row]:
 
-                            if cell.m_cell.isRevealed:
-                                count += 1
-                                gameDisplay.blit(cell_contents[gB.board[cell.y][cell.x].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
+                            if cell.rect.colliderect(m_rect):
 
-                            elif cell.m_cell.isFlagged:
+                                if cell.m_cell.isRevealed != True:
 
-                                if(cell.m_cell.isFlagged):
-                                    flagged_count += 1
-                                gameDisplay.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
+                                    if(cell.m_cell.isFlagged == True):
+                                        #if cell is flagged, toggle and update flag counter
+                                        flags += cell.m_cell.set_flag()
 
-                            else:
-                                gameDisplay.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
+                                    else:
+                                        #if cell is not flagged, toggle and update flag counter if flags > 0
 
-                            if(count == remaining or flagged_count == mines):
-                                pygame.font.init()
-                                #following copied from gamefunctions
-                                #menu_surf = pygame.Surface((200,100))
-                                #menu_rect = placeSurface(menu_surf,display_width/2,display_height/2)
-                                #gameDisplay.blit(menu_surf,menu_rect)
-                                #menu_surf.fill((white))
-                                #drawText("YOU WIN!", pygame.font.SysFont('None',40), (black), menu_surf, 200*.5, 100*.25)
-                                menu_but = gui_button(white,0,60, display_width,40, "YOU WIN!")
-                                menu_but.draw(gameDisplay, 1)
-                                quit_2 = gui_button(white,display_width/2 - button_width/2, display_height/2, button_width, 40, "Quit", quit_game)
-                                quit_2.draw(gameDisplay, 1)
+                                        if(flags > 0):
+                                            flags += cell.m_cell.set_flag()
 
-                                if (quit_2.rect.colliderect(m_rect)):
-                                    quit_2.clicked()
+                                    flags_button.text = "Flags remaining: " + str(flags)
+                                    flags_button.draw(gameDisplay, 1)
+                #below loop redraws game board after each user event (necessary in the case of revealing multiple cells)
+            for row in range(rows):
+                for cell in cell_list[row]:
 
-                    pygame.display.update()
+                    if cell.m_cell.isRevealed:
+                        count += 1
+                        gameDisplay.blit(cell_contents[gB.board[cell.y][cell.x].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
+
+                    elif cell.m_cell.isFlagged:
+
+                        if(cell.m_cell.isMined):
+                            flagged_count += 1
+                        gameDisplay.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
+
+                    else:
+                        gameDisplay.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
+
+                    if(count == remaining or flagged_count == mines):
+                        for row in range(rows):
+                            for cell in cell_list[row]:
+                                cell.m_cell.set_revealed()
+                        pygame.font.init()
+                        menu_but = gui_button(white,0,60, display_width,40, "YOU WIN!")
+                        menu_but.draw(gameDisplay, 1)
+                        quit_2 = gui_button(white,display_width/2 - button_width/2, display_height/2, button_width, 40, "Quit", quit_game)
+                        quit_2.draw(gameDisplay, 1)
+
+                        if (quit_2.rect.colliderect(m_rect)):
+                            quit_2.clicked()
+
+            pygame.display.update()
 
 
 
 
 
 def start_game(rows,cols,mines):
+    """
+    @pre Creates board to pass along with board details to gui_start
+    """
     pygame.quit()
-    '''
-    @TODO: add input checking
-    '''
+
     ms = minesweeper_gui
     gB = Board(cols,rows)
     place_mines(gB,mines)
