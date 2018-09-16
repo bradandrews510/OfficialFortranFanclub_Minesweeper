@@ -277,12 +277,11 @@ def update_display(display, gB, cell_list,count,flagged_count):
 
             elif cell.m_cell.isFlagged:
 
+                display.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
                 if(cell.m_cell.isMined):
                     flagged_count += 1
-                    display.blit(flag_image,(cell.x * cell_size, 40 + cell.y * cell_size))
-
-                else:
-                    display.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
+            else:
+                display.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
     return (count,flagged_count)
 
 def start_game(rows,cols,mines):
