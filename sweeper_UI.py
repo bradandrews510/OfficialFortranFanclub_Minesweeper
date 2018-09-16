@@ -186,7 +186,6 @@ class minesweeper_gui:
 
         while(mine_hit == False):
             #starting game loop
-            count = 0
             flagged_count = 0
 
             for event in pygame.event.get():
@@ -221,7 +220,7 @@ class minesweeper_gui:
                                             for row in range(rows):
                                                 for cell in cell_list[row]:
                                                     cell.m_cell.set_revealed()
-                                            update_display(gameDisplay, gB, cell_list, count, flagged_count)
+                                            update_display(gameDisplay, gB, cell_list, flagged_count)
                                             game_over(gameDisplay)
 
                 elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
@@ -249,15 +248,15 @@ class minesweeper_gui:
                                     flags_button.text = "Flags remaining: " + str(flags)
                                     flags_button.draw(gameDisplay, 1)
                 if (game_win == False):
-                    count, flagged_count = update_display(gameDisplay, gB, cell_list, count, flagged_count)
+                    flagged_count = update_display(gameDisplay, gB, cell_list, flagged_count)
 
-                if(count == remaining or flagged_count == mines):
+                if(flagged_count == mines):
 
                     game_win = True
                     for row in range(rows):
                         for cell in cell_list[row]:
                             cell.m_cell.set_revealed()
-                    count, flagged_count = update_display(gameDisplay, gB, cell_list, count, flagged_count)
+                    flagged_count = update_display(gameDisplay, gB, cell_list, flagged_count)
                     pygame.font.init()
                     menu_but = gui_button((0,204,0),0,0, display_width-button_width,40, "YOU WIN!")
                     menu_but.draw(gameDisplay, 1)
@@ -271,18 +270,17 @@ class minesweeper_gui:
 
             pygame.display.update()
 
-def update_display(display, gB, cell_list,count,flagged_count):
+def update_display(display, gB, cell_list,flagged_count):
     """
-    @pre take display, game board, cell 2d array, and count and flagged count inputs
+    @pre take display, game board, cell 2d array, and flagged count inputs
     @post update each game cell
-    @return count and flagged count for game win checking
+    @return flagged count for game win checking
     """
     flagged_count = 0
     for row in range(gB.get_height()):
         for cell in cell_list[row]:
 
             if cell.m_cell.isRevealed:
-                count += 1
                 display.blit(cell_contents[gB.board[cell.y][cell.x].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
 
             elif cell.m_cell.isFlagged:
@@ -292,7 +290,7 @@ def update_display(display, gB, cell_list,count,flagged_count):
                     flagged_count += 1
             else:
                 display.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
-    return (count,flagged_count)
+    return (flagged_count)
 
 def start_game(rows,cols,mines):
     """
