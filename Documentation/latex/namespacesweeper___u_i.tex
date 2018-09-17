@@ -1,0 +1,155 @@
+\hypertarget{namespacesweeper___u_i}{}\section{sweeper\+\_\+\+UI Namespace Reference}
+\label{namespacesweeper___u_i}\index{sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classsweeper___u_i_1_1cell__button}{cell\+\_\+button}
+\item 
+class \hyperlink{classsweeper___u_i_1_1gui__button}{gui\+\_\+button}
+\item 
+class \hyperlink{classsweeper___u_i_1_1minesweeper__gui}{minesweeper\+\_\+gui}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacesweeper___u_i_a60d3b69c6e596a8cc72c88a3fd159926}{quit\+\_\+game} ()
+\item 
+def \hyperlink{namespacesweeper___u_i_a1d2372a72b38f4c14cfd981325b3ee83}{reveal} (gB, row, col)
+\item 
+def \hyperlink{namespacesweeper___u_i_a0b6997d23bebdf719e9ba3f83bb89b1a}{update\+\_\+display} (display, gB, cell\+\_\+list, flagged\+\_\+count)
+\item 
+def \hyperlink{namespacesweeper___u_i_a6d328451ee39123c0cb2af67b6a79379}{start\+\_\+game} (rows, cols, mines)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_ac2685bc015f77c62e660b989c2625e2d}\label{namespacesweeper___u_i_ac2685bc015f77c62e660b989c2625e2d}} 
+int {\bfseries button\+\_\+width} = 80
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a10803f7f3f641ad4d8cfbd88fc64af2f}\label{namespacesweeper___u_i_a10803f7f3f641ad4d8cfbd88fc64af2f}} 
+int {\bfseries min\+\_\+width} = 3 $\ast$ button\+\_\+width
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a1f3bcddbea407f212391e874256a6c61}\label{namespacesweeper___u_i_a1f3bcddbea407f212391e874256a6c61}} 
+int {\bfseries min\+\_\+height} = 240
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a2ae5ba1ea6d8eefbe0e4af11ee6b17eb}\label{namespacesweeper___u_i_a2ae5ba1ea6d8eefbe0e4af11ee6b17eb}} 
+tuple {\bfseries white} = (255,255,255)
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_aef4353ac12e94cb4073e1d59bd205901}\label{namespacesweeper___u_i_aef4353ac12e94cb4073e1d59bd205901}} 
+tuple {\bfseries black} = (0,0,0)
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a540da8f8a58ac7664a031ef2fbf9aa50}\label{namespacesweeper___u_i_a540da8f8a58ac7664a031ef2fbf9aa50}} 
+tuple {\bfseries gray} = (122,122,122)
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a4d92156c6646b42c221da4391e6bac42}\label{namespacesweeper___u_i_a4d92156c6646b42c221da4391e6bac42}} 
+{\bfseries revealed\+\_\+image} = pygame.\+image.\+load(\char`\"{}tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_abe49380b28b05717984f98245ef82b38}\label{namespacesweeper___u_i_abe49380b28b05717984f98245ef82b38}} 
+{\bfseries cell\+\_\+image} = pygame.\+image.\+load(\char`\"{}cell\+\_\+image.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_acacaf18f9f4ac7e1d2c92f337ca528ba}\label{namespacesweeper___u_i_acacaf18f9f4ac7e1d2c92f337ca528ba}} 
+{\bfseries flag\+\_\+image} = pygame.\+image.\+load(\char`\"{}flag\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a2933482fc7dcd3706b03c71a2bb92a13}\label{namespacesweeper___u_i_a2933482fc7dcd3706b03c71a2bb92a13}} 
+{\bfseries one\+\_\+image} = pygame.\+image.\+load(\char`\"{}one\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_ac8852c0b349e5d2a50c7834891447d5c}\label{namespacesweeper___u_i_ac8852c0b349e5d2a50c7834891447d5c}} 
+{\bfseries two\+\_\+image} = pygame.\+image.\+load(\char`\"{}two\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a686e818a88ca91326ca3cf106516ea17}\label{namespacesweeper___u_i_a686e818a88ca91326ca3cf106516ea17}} 
+{\bfseries three\+\_\+image} = pygame.\+image.\+load(\char`\"{}three\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_ae8187ea44aca6a2b1ac3c4a404bc896f}\label{namespacesweeper___u_i_ae8187ea44aca6a2b1ac3c4a404bc896f}} 
+{\bfseries four\+\_\+image} = pygame.\+image.\+load(\char`\"{}four\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a4a92de7606a208a674a1eb410d93d566}\label{namespacesweeper___u_i_a4a92de7606a208a674a1eb410d93d566}} 
+{\bfseries five\+\_\+image} = pygame.\+image.\+load(\char`\"{}five\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a16936d9074cd118b2b16eb0732bfaa63}\label{namespacesweeper___u_i_a16936d9074cd118b2b16eb0732bfaa63}} 
+{\bfseries six\+\_\+image} = pygame.\+image.\+load(\char`\"{}six\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_afb69503b548d0bfa13d88190257a870a}\label{namespacesweeper___u_i_afb69503b548d0bfa13d88190257a870a}} 
+{\bfseries seven\+\_\+image} = pygame.\+image.\+load(\char`\"{}seven\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_a03f55d6e44aa2274710db9b0e8fce802}\label{namespacesweeper___u_i_a03f55d6e44aa2274710db9b0e8fce802}} 
+{\bfseries eight\+\_\+image} = pygame.\+image.\+load(\char`\"{}eight\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_aa5e3b4f4a9704288a7d0e310dfe45e28}\label{namespacesweeper___u_i_aa5e3b4f4a9704288a7d0e310dfe45e28}} 
+{\bfseries mine\+\_\+image} = pygame.\+image.\+load(\char`\"{}mine\+\_\+tile.\+png\char`\"{})
+\item 
+\mbox{\Hypertarget{namespacesweeper___u_i_aec495a6edf2be23cabf9eb2f8d1ae537}\label{namespacesweeper___u_i_aec495a6edf2be23cabf9eb2f8d1ae537}} 
+int {\bfseries cell\+\_\+size} = 20
+\item 
+dictionary {\bfseries cell\+\_\+contents}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Cell Grid, New game, help, quit buttons functionality\end{DoxyVerb}
+ 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacesweeper___u_i_a60d3b69c6e596a8cc72c88a3fd159926}\label{namespacesweeper___u_i_a60d3b69c6e596a8cc72c88a3fd159926}} 
+\index{sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}!quit\+\_\+game@{quit\+\_\+game}}
+\index{quit\+\_\+game@{quit\+\_\+game}!sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}}
+\subsubsection{\texorpdfstring{quit\+\_\+game()}{quit\_game()}}
+{\footnotesize\ttfamily def sweeper\+\_\+\+U\+I.\+quit\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre called by quit buttons, quits game
+@post game is quit
+@return none
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacesweeper___u_i_a1d2372a72b38f4c14cfd981325b3ee83}\label{namespacesweeper___u_i_a1d2372a72b38f4c14cfd981325b3ee83}} 
+\index{sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}!reveal@{reveal}}
+\index{reveal@{reveal}!sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}}
+\subsubsection{\texorpdfstring{reveal()}{reveal()}}
+{\footnotesize\ttfamily def sweeper\+\_\+\+U\+I.\+reveal (\begin{DoxyParamCaption}\item[{}]{gB,  }\item[{}]{row,  }\item[{}]{col }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre calls recReveal, return Tue if mine hit
+@post recursively change cell isflagged value
+@return True if mine is hit
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacesweeper___u_i_a6d328451ee39123c0cb2af67b6a79379}\label{namespacesweeper___u_i_a6d328451ee39123c0cb2af67b6a79379}} 
+\index{sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}!start\+\_\+game@{start\+\_\+game}}
+\index{start\+\_\+game@{start\+\_\+game}!sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}}
+\subsubsection{\texorpdfstring{start\+\_\+game()}{start\_game()}}
+{\footnotesize\ttfamily def sweeper\+\_\+\+U\+I.\+start\+\_\+game (\begin{DoxyParamCaption}\item[{}]{rows,  }\item[{}]{cols,  }\item[{}]{mines }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre Creates board to pass along with board details to gui_start
+@post runs gui_start to begin game loop
+@return none
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacesweeper___u_i_a0b6997d23bebdf719e9ba3f83bb89b1a}\label{namespacesweeper___u_i_a0b6997d23bebdf719e9ba3f83bb89b1a}} 
+\index{sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}!update\+\_\+display@{update\+\_\+display}}
+\index{update\+\_\+display@{update\+\_\+display}!sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}}
+\subsubsection{\texorpdfstring{update\+\_\+display()}{update\_display()}}
+{\footnotesize\ttfamily def sweeper\+\_\+\+U\+I.\+update\+\_\+display (\begin{DoxyParamCaption}\item[{}]{display,  }\item[{}]{gB,  }\item[{}]{cell\+\_\+list,  }\item[{}]{flagged\+\_\+count }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre take display, game board, cell 2d array, and flagged count inputs
+@post update each game cell
+@return flagged count for game win checking
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacesweeper___u_i_a7d0e80394d61cdf349f0f82925f988a1}\label{namespacesweeper___u_i_a7d0e80394d61cdf349f0f82925f988a1}} 
+\index{sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}!cell\+\_\+contents@{cell\+\_\+contents}}
+\index{cell\+\_\+contents@{cell\+\_\+contents}!sweeper\+\_\+\+UI@{sweeper\+\_\+\+UI}}
+\subsubsection{\texorpdfstring{cell\+\_\+contents}{cell\_contents}}
+{\footnotesize\ttfamily dictionary sweeper\+\_\+\+U\+I.\+cell\+\_\+contents}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  \{
+2     \textcolor{stringliteral}{'1'} : one\_image,
+3     \textcolor{stringliteral}{'2'} : two\_image,
+4     \textcolor{stringliteral}{'3'} : three\_image,
+5     \textcolor{stringliteral}{'4'} : four\_image,
+6     \textcolor{stringliteral}{'5'} : five\_image,
+7     \textcolor{stringliteral}{'6'} : six\_image,
+8     \textcolor{stringliteral}{'7'} : seven\_image,
+9     \textcolor{stringliteral}{'8'} : eight\_image,
+10     \textcolor{stringliteral}{'M'} : mine\_image,
+11     \textcolor{stringliteral}{'-'} : revealed\_image
+12 \}
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generate_5fboard',['generate_board',['../class_board_1_1_game_board.html#ac785acd72718c7b3d41afbab9ed00b9a',1,'Board::GameBoard']]]
+  ['clicked',['clicked',['../classsweeper___u_i_1_1gui__button.html#af74950231e0ddbcb8582404a8320dee5',1,'sweeper_UI::gui_button']]]
 ];
