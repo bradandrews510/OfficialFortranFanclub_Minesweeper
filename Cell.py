@@ -79,4 +79,5 @@ class Cell:
         """ @pre    No error checking, it's assumed this the value of textRep
         is valid and returnable
             @return Cell's text representation
+        """
         return self.textRep
