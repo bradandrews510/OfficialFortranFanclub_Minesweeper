@@ -6,22 +6,22 @@ from Board import *
 from Cell import *
 
 def recReveal(grid, rows, cols):
-
+    """ @pre    Grid is a valid object of type Board, rows and cols is the location in the board to reveal
+        @post   will reveal all
+        @return returns true if the cell in question is a mine, false if it is not
+    """
     if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True:
         return False
 
     grid.board[rows][cols].set_revealed()
 
     if grid.board[rows][cols].get_cell_textRep()=='M':
-        print("Stop point- ", rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
         return True
 
     elif grid.board[rows][cols].get_cell_textRep()!='-':
-        print("Stop point- ", rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
         return False
 
     elif grid.board[rows][cols].get_cell_textRep()=='-':
-        print(rows, ":", cols, ":", grid.board[rows][cols].get_cell_textRep())
         recReveal(grid, rows-1, cols-1)
         recReveal(grid, rows-1, cols)
         recReveal(grid, rows-1, cols+1)
@@ -35,10 +35,12 @@ def recReveal(grid, rows, cols):
     return False
 
 def board_create(grid):
-    #print(grid.get_height(), " by ", grid.get_width())
+    """ @pre    grid is of type Board
+        @post   Populates the board with numbers of adjacent mines for each cell.
+        @return None
+    """
     for rows in range(grid.get_height()):
         for cols in range(grid.get_width()):
-            #print(rows, ":", cols)
             if grid.board[rows][cols].textRep=='M':
                 adjacent(grid, rows-1, cols-1)
                 adjacent(grid, rows-1, cols)
@@ -48,11 +50,13 @@ def board_create(grid):
                 adjacent(grid, rows+1, cols)
                 adjacent(grid, rows+1, cols-1)
                 adjacent(grid, rows, cols-1)
-
-    grid.print_board()
     return
 
 def adjacent(grid, rows, cols):
+    """ @pre    grid is of type board
+        @post   Increments the numAdjacent of the cell in question by one if it is in the bounds of the board. Also changes the textRep to be the new numAdjacent.
+        @return None
+    """
     if rows>=grid.get_height() or rows<0 or cols>=grid.get_width() or cols<0 or grid.board[rows][cols].isRevealed==True or grid.board[rows][cols].isMined==True:
         return
 
@@ -62,8 +66,8 @@ def adjacent(grid, rows, cols):
 
 #places the mines
 def place_mines(grid, numofMines):
-    """ @pre    The number of mines n is valid
-        @post   Populates the game board with n mines
+    """ @pre    grid is of type Board, The number of mines n is valid
+        @post   Populates the game board with n mines placed randomly
         @return None
     """
     #print("In place_mines")
@@ -76,56 +80,40 @@ def place_mines(grid, numofMines):
         if grid.board[i][j].isMined == False:
             grid.board[i][j].set_mine()
             mCounter = mCounter - 1
+    return
 
 def game_over(gameSurface):
-    print("ENTERED GAME_OVER----------")
-    global FPSCLOCK, DISPLAYSURFACE  #Testing purposes
-    print("TEST AREA 1----------")
+    """ @pre    gameSurface is the main display for pygame
+        @post   opens a game over screen with a quit button to quit pygame
+        @return None
+    """
+    global BUTTONFONT, TEXTFONT, BUTTONCOLOR, BLACK, WHITE
 
-    global BASICFONT, TEXTFONT, RESET_SURF, RESET_RECT, QUIT_SURF, QUIT_RECT
-    print("TEST AREA 2----------")
-
-    # pygame.init()  #Testing purposes
-    # pygame.display.set_caption('Minesweeper')  #Testing purposes
-    FPSCLOCK = pygame.time.Clock()  #Testing purposes
-    print("TEST AREA 3----------")
-    DISPLAYSURFACE = gameSurface; #Testing purposes
-    print("TEST AREA 4----------")
-    BASICFONT = pygame.font.SysFont('None', 30)
-    print("TEST AREA 5----------")
+    BUTTONFONT = pygame.font.SysFont('None', 40)
     TEXTFONT = pygame.font.SysFont('None', 40)
-    print("TEST AREA 6----------")
-    RESET_SURF, RESET_RECT = drawButton('New Game', (0, 0, 0), (225, 225, 225), 200/3, 100*.75)
-    print("TEST AREA 7----------")
-    QUIT_SURF, QUIT_RECT = drawButton('Quit', (0, 0, 0), (225, 225, 225), 200*.75, 100*.75)
-    print("TEST AREA 8----------")
+    BUTTONCOLOR = (255, 0, 0)
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+    QUIT_SURF, QUIT_RECT = create_button('Quit', 200*.5, 100*.75)
     MENU_SURF = pygame.Surface((200,100))
-    print("TEST AREA 9----------")
-    MENU_RECT = placeSurface(MENU_SURF, DISPLAYSURFACE.get_width()/2, DISPLAYSURFACE.get_height()/2)
-    print("TEST AREA 10----------")
+    MENU_RECT = place_surface(MENU_SURF, gameSurface.get_width()/2, gameSurface.get_height()/2)
 
-    RESET_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
     QUIT_RECT.move_ip(MENU_RECT.left,MENU_RECT.top)
 
     mouse_x = 0
     mouse_y = 0
     running = True
-    print("RUNNING = ", running, "----------")
-    #DISPLAYSURFACE.fill((0,0,0))
 
     while(running):
         mouseClicked = False
         spacePressed = False
         running = True
 
-        #DISPLAYSURFACE.fill((0,0,0))  #Testing purposes
+        gameSurface.blit(MENU_SURF, MENU_RECT)
+        MENU_SURF.fill(WHITE)
+        draw_text("Game Over", MENU_SURF, 200*.5, 100*.25)
 
-        DISPLAYSURFACE.blit(MENU_SURF, MENU_RECT)
-        MENU_SURF.fill((255,255,255))
-        drawText("Game Over", TEXTFONT, ((0,0,0)), MENU_SURF, 200*.5, 100*.25)
-
-        DISPLAYSURFACE.blit(RESET_SURF, RESET_RECT)
-        DISPLAYSURFACE.blit(QUIT_SURF, QUIT_RECT)
+        gameSurface.blit(QUIT_SURF, QUIT_RECT)
 
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
@@ -137,56 +125,40 @@ def game_over(gameSurface):
                 mouse_x, mouse_y = event.pos
                 mouseClicked = True
 
-        if RESET_RECT.collidepoint(mouse_x, mouse_y):
-            highlightButton(DISPLAYSURFACE, RESET_RECT)
-            if mouseClicked:
-                running = False
-                pygame.quit()
-                break
-
-        # check if show box is clicked
         if QUIT_RECT.collidepoint(mouse_x, mouse_y):
-            highlightButton(DISPLAYSURFACE, QUIT_RECT)
             if mouseClicked:
                 pygame.quit()
                 sys.exit()
 
         pygame.display.update()
-        FPSCLOCK.tick(30)
 
-def drawButton(text, textColor, backgroundColor, center_x, center_y):
+def create_button(text, x, y):
+    """ @pre    none
+        @post   Creates a surface and text with different color for the background and text, along with a rectangle at that location
+        @return the surface and rectangle created called buttonSurf, buttonRect
+    """
+    buttonSurf = BUTTONFONT.render(text, True, BLACK, BUTTONCOLOR)
+    buttonRect = buttonSurf.get_rect()
+    buttonRect.centerx, buttonRect.centery = x, y
 
-    butSurf = BASICFONT.render(text, True, textColor, backgroundColor)
-    buttonRect = butSurf.get_rect()
-    buttonRect.centerx = center_x
-    buttonRect.centery = center_y
+    return (buttonSurf, buttonRect)
 
-    return (butSurf, buttonRect)
-
-def placeSurface(screen, center_x, center_y):
-
+def place_surface(screen, x, y):
+    """ @pre    none
+        @post   returns a rectangle for the given surface that is moved to the given position
+        @return the rectangle for the surface, surfRect
+    """
     surfRect = screen.get_rect()
-    surfRect.centerx = center_x
-    surfRect.centery = center_y
+    surfRect.centerx, surfRect.centery = x, y
 
     return surfRect
 
-def drawText(text, font, color, surface, x, y):
-
-    textSurf = font.render(text, True, color)
+def draw_text(text, surface, x, y):
+    """ @pre    none
+        @post   creates text centered at the x and y position given relative to the surface and blits it on
+        @return None
+    """
+    textSurf = TEXTFONT.render(text, True, BLACK)
     textRect = textSurf.get_rect()
-    textRect.centerx = x
-    textRect.centery = y
+    textRect.centerx ,textRect.centery = x, y
     surface.blit(textSurf, textRect)
-
-def highlightButton(screen, buttonRect):
-
-    linewidth = 4
-    pygame.draw.rect(screen, (0, 128, 0), (buttonRect.left-linewidth, buttonRect.top-linewidth, buttonRect.width+2*linewidth, buttonRect.height+2*linewidth), linewidth)
-
-print("2x2 with 2 mines")
-tB = Board(5,5)
-place_mines(tB,5)
-board_create(tB)
-tB.print_board()
-recReveal(tB, 0, 0)
