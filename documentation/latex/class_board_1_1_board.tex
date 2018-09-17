@@ -3,8 +3,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_board_1_1_board_a4e5fe775dd732dca12ba2f24f5e33cd0}\label{class_board_1_1_board_a4e5fe775dd732dca12ba2f24f5e33cd0}} 
-def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, width, height)
+def \hyperlink{class_board_1_1_board_a4e5fe775dd732dca12ba2f24f5e33cd0}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, width, height)
 \item 
 def \hyperlink{class_board_1_1_board_a6134b116a4421868d9b70a90cae3cf6a}{get\+\_\+height} (self)
 \item 
@@ -12,8 +11,7 @@ def \hyperlink{class_board_1_1_board_a5461757505c80b532af77cc6a651c7a7}{get\+\_\
 \item 
 def \hyperlink{class_board_1_1_board_a6c6aa64d586b48c8cbf7942a28ef4fba}{generate\+\_\+board} (self)
 \item 
-\mbox{\Hypertarget{class_board_1_1_board_a8c672c7842189de03079a86c757244d7}\label{class_board_1_1_board_a8c672c7842189de03079a86c757244d7}} 
-def {\bfseries get\+\_\+acces\+\_\+by\+\_\+cell} (self, i, j)
+def \hyperlink{class_board_1_1_board_a8c672c7842189de03079a86c757244d7}{get\+\_\+acces\+\_\+by\+\_\+cell} (self, i, j)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -29,6 +27,31 @@ def {\bfseries get\+\_\+acces\+\_\+by\+\_\+cell} (self, i, j)
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file Board.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_board_1_1_board_a4e5fe775dd732dca12ba2f24f5e33cd0}\label{class_board_1_1_board_a4e5fe775dd732dca12ba2f24f5e33cd0}} 
+\index{Board\+::\+Board@{Board\+::\+Board}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Board\+::\+Board@{Board\+::\+Board}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Board.\+Board.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{width,  }\item[{}]{height }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    width and height have been verified externally and so
+the Board class assumes we have proper values
+    @post   Once width and height have been assigned, a call is made to
+generate_board() which will then create an array to represent the board
+\end{DoxyVerb}
+ 
+
+Definition at line 17 of file Board.\+py.
+
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_board_1_1_board_a6c6aa64d586b48c8cbf7942a28ef4fba}\label{class_board_1_1_board_a6c6aa64d586b48c8cbf7942a28ef4fba}} 
 \index{Board\+::\+Board@{Board\+::\+Board}!generate\+\_\+board@{generate\+\_\+board}}
@@ -36,32 +59,62 @@ def {\bfseries get\+\_\+acces\+\_\+by\+\_\+cell} (self, i, j)
 \subsubsection{\texorpdfstring{generate\+\_\+board()}{generate\_board()}}
 {\footnotesize\ttfamily def Board.\+Board.\+generate\+\_\+board (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@pre    None
-    @post   Generates the game board...
-    @return None
+\begin{DoxyVerb}@pre    Assumes a width and height have been assigned
+    @post   Generates the game board using a simple list comprehension
 \end{DoxyVerb}
- \mbox{\Hypertarget{class_board_1_1_board_a6134b116a4421868d9b70a90cae3cf6a}\label{class_board_1_1_board_a6134b116a4421868d9b70a90cae3cf6a}} 
+ 
+
+Definition at line 61 of file Board.\+py.
+
+\mbox{\Hypertarget{class_board_1_1_board_a8c672c7842189de03079a86c757244d7}\label{class_board_1_1_board_a8c672c7842189de03079a86c757244d7}} 
+\index{Board\+::\+Board@{Board\+::\+Board}!get\+\_\+acces\+\_\+by\+\_\+cell@{get\+\_\+acces\+\_\+by\+\_\+cell}}
+\index{get\+\_\+acces\+\_\+by\+\_\+cell@{get\+\_\+acces\+\_\+by\+\_\+cell}!Board\+::\+Board@{Board\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+\_\+acces\+\_\+by\+\_\+cell()}{get\_acces\_by\_cell()}}
+{\footnotesize\ttfamily def Board.\+Board.\+get\+\_\+acces\+\_\+by\+\_\+cell (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{i,  }\item[{}]{j }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    Assumes a valid i and j value have been passed. It does not
+attempt to verify if i and j are integers or do any sort of sanity
+check
+    @post   If a cell in some direction d is within 1 unit of distance
+to the cell at [i][j], update the dictionary with a 'pointer' to the
+accessible cell... Needs to be reworded...
+    @return A dictionary containing all the accessible directions for
+the specific cell located at [i][j]
+\end{DoxyVerb}
+ 
+
+Definition at line 75 of file Board.\+py.
+
+\mbox{\Hypertarget{class_board_1_1_board_a6134b116a4421868d9b70a90cae3cf6a}\label{class_board_1_1_board_a6134b116a4421868d9b70a90cae3cf6a}} 
 \index{Board\+::\+Board@{Board\+::\+Board}!get\+\_\+height@{get\+\_\+height}}
 \index{get\+\_\+height@{get\+\_\+height}!Board\+::\+Board@{Board\+::\+Board}}
 \subsubsection{\texorpdfstring{get\+\_\+height()}{get\_height()}}
 {\footnotesize\ttfamily def Board.\+Board.\+get\+\_\+height (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@pre    None
-    @post   None
-    @return The board height
+\begin{DoxyVerb}@pre    Assume height is a valid and returnable value
+    @post   No changes are made anywhere
+    @return Board height
 \end{DoxyVerb}
- \mbox{\Hypertarget{class_board_1_1_board_a5461757505c80b532af77cc6a651c7a7}\label{class_board_1_1_board_a5461757505c80b532af77cc6a651c7a7}} 
+ 
+
+Definition at line 38 of file Board.\+py.
+
+\mbox{\Hypertarget{class_board_1_1_board_a5461757505c80b532af77cc6a651c7a7}\label{class_board_1_1_board_a5461757505c80b532af77cc6a651c7a7}} 
 \index{Board\+::\+Board@{Board\+::\+Board}!get\+\_\+width@{get\+\_\+width}}
 \index{get\+\_\+width@{get\+\_\+width}!Board\+::\+Board@{Board\+::\+Board}}
 \subsubsection{\texorpdfstring{get\+\_\+width()}{get\_width()}}
 {\footnotesize\ttfamily def Board.\+Board.\+get\+\_\+width (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@pre    None
-    @post   None
-    @return The board width
+\begin{DoxyVerb}@pre    Assumes width is a valid and returnable value
+    @post   No changes are made anywhere
+    @return Board width
 \end{DoxyVerb}
  
 
+Definition at line 45 of file Board.\+py.
+
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/edhidalgo/\+Official\+Fortran\+Fanclub\+\_\+\+Minesweeper/Board.\+py\end{DoxyCompactItemize}
+Board.\+py\end{DoxyCompactItemize}

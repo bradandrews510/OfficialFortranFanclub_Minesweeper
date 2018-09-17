@@ -1,0 +1,142 @@
+\hypertarget{namespacegamefunctions}{}\section{gamefunctions Namespace Reference}
+\label{namespacegamefunctions}\index{gamefunctions@{gamefunctions}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegamefunctions_a7d344c04c49594d58ba15b6673f9f8d9}{rec\+Reveal} (grid, rows, cols)
+\item 
+def \hyperlink{namespacegamefunctions_a26a89961ef41d92fb61c4703f9c63dca}{board\+\_\+create} (grid)
+\item 
+def \hyperlink{namespacegamefunctions_a0a55e81352e3e0790627bb267c2391ae}{adjacent} (grid, rows, cols)
+\item 
+def \hyperlink{namespacegamefunctions_acf46cabff90f0d1e06c4aadc3865292a}{place\+\_\+mines} (grid, numof\+Mines)
+\item 
+def \hyperlink{namespacegamefunctions_a08a81f3d3aebb362a637fa900ca9af5c}{game\+\_\+over} (game\+Surface)
+\item 
+def \hyperlink{namespacegamefunctions_a60920b30a54df9dfed7de61f17403e07}{create\+\_\+button} (text, x, y)
+\item 
+def \hyperlink{namespacegamefunctions_a109b9daf1366f60cec625c3ff29fd7dd}{place\+\_\+surface} (screen, x, y)
+\item 
+def \hyperlink{namespacegamefunctions_aad080841b3df3284089074d16588ed82}{create\+\_\+text} (text, surface, x, y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}@package docstring
+   Game Board... this file or the class needs to be renamed
+\end{DoxyVerb}
+ 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacegamefunctions_a0a55e81352e3e0790627bb267c2391ae}\label{namespacegamefunctions_a0a55e81352e3e0790627bb267c2391ae}} 
+\index{gamefunctions@{gamefunctions}!adjacent@{adjacent}}
+\index{adjacent@{adjacent}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{adjacent()}{adjacent()}}
+{\footnotesize\ttfamily def gamefunctions.\+adjacent (\begin{DoxyParamCaption}\item[{}]{grid,  }\item[{}]{rows,  }\item[{}]{cols }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    grid is of type board
+    @post   Increments the numAdjacent of the cell in question by one if it is in the bounds of the board. Also changes the textRep to be the new numAdjacent.
+    @return None
+\end{DoxyVerb}
+ 
+
+Definition at line 58 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_a26a89961ef41d92fb61c4703f9c63dca}\label{namespacegamefunctions_a26a89961ef41d92fb61c4703f9c63dca}} 
+\index{gamefunctions@{gamefunctions}!board\+\_\+create@{board\+\_\+create}}
+\index{board\+\_\+create@{board\+\_\+create}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{board\+\_\+create()}{board\_create()}}
+{\footnotesize\ttfamily def gamefunctions.\+board\+\_\+create (\begin{DoxyParamCaption}\item[{}]{grid }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    grid is of type Board
+    @post   Populates the board with numbers of adjacent mines for each cell.
+    @return None
+\end{DoxyVerb}
+ 
+
+Definition at line 40 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_a60920b30a54df9dfed7de61f17403e07}\label{namespacegamefunctions_a60920b30a54df9dfed7de61f17403e07}} 
+\index{gamefunctions@{gamefunctions}!create\+\_\+button@{create\+\_\+button}}
+\index{create\+\_\+button@{create\+\_\+button}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{create\+\_\+button()}{create\_button()}}
+{\footnotesize\ttfamily def gamefunctions.\+create\+\_\+button (\begin{DoxyParamCaption}\item[{}]{text,  }\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    none
+    @post   Creates a surface and text with different color for the background and text, along with a rectangle at that location
+    @return the surface and rectangle created called buttonSurf, buttonRect
+\end{DoxyVerb}
+ 
+
+Definition at line 138 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_aad080841b3df3284089074d16588ed82}\label{namespacegamefunctions_aad080841b3df3284089074d16588ed82}} 
+\index{gamefunctions@{gamefunctions}!create\+\_\+text@{create\+\_\+text}}
+\index{create\+\_\+text@{create\+\_\+text}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{create\+\_\+text()}{create\_text()}}
+{\footnotesize\ttfamily def gamefunctions.\+create\+\_\+text (\begin{DoxyParamCaption}\item[{}]{text,  }\item[{}]{surface,  }\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    none
+    @post   creates text centered at the x and y position given relative to the surface and blits it on
+    @return None
+\end{DoxyVerb}
+ 
+
+Definition at line 159 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_a08a81f3d3aebb362a637fa900ca9af5c}\label{namespacegamefunctions_a08a81f3d3aebb362a637fa900ca9af5c}} 
+\index{gamefunctions@{gamefunctions}!game\+\_\+over@{game\+\_\+over}}
+\index{game\+\_\+over@{game\+\_\+over}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{game\+\_\+over()}{game\_over()}}
+{\footnotesize\ttfamily def gamefunctions.\+game\+\_\+over (\begin{DoxyParamCaption}\item[{}]{game\+Surface }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    gameSurface is the main display for pygame
+    @post   opens a game over screen with a quit button to quit pygame
+    @return None
+\end{DoxyVerb}
+ 
+
+Definition at line 88 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_acf46cabff90f0d1e06c4aadc3865292a}\label{namespacegamefunctions_acf46cabff90f0d1e06c4aadc3865292a}} 
+\index{gamefunctions@{gamefunctions}!place\+\_\+mines@{place\+\_\+mines}}
+\index{place\+\_\+mines@{place\+\_\+mines}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{place\+\_\+mines()}{place\_mines()}}
+{\footnotesize\ttfamily def gamefunctions.\+place\+\_\+mines (\begin{DoxyParamCaption}\item[{}]{grid,  }\item[{}]{numof\+Mines }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    grid is of type Board, The number of mines n is valid
+    @post   Populates the game board with n mines placed randomly
+    @return None
+\end{DoxyVerb}
+ 
+
+Definition at line 71 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_a109b9daf1366f60cec625c3ff29fd7dd}\label{namespacegamefunctions_a109b9daf1366f60cec625c3ff29fd7dd}} 
+\index{gamefunctions@{gamefunctions}!place\+\_\+surface@{place\+\_\+surface}}
+\index{place\+\_\+surface@{place\+\_\+surface}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{place\+\_\+surface()}{place\_surface()}}
+{\footnotesize\ttfamily def gamefunctions.\+place\+\_\+surface (\begin{DoxyParamCaption}\item[{}]{screen,  }\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    none
+    @post   returns a rectangle for the given surface that is moved to the given position
+    @return the rectangle for the surface, surfRect
+\end{DoxyVerb}
+ 
+
+Definition at line 149 of file gamefunctions.\+py.
+
+\mbox{\Hypertarget{namespacegamefunctions_a7d344c04c49594d58ba15b6673f9f8d9}\label{namespacegamefunctions_a7d344c04c49594d58ba15b6673f9f8d9}} 
+\index{gamefunctions@{gamefunctions}!rec\+Reveal@{rec\+Reveal}}
+\index{rec\+Reveal@{rec\+Reveal}!gamefunctions@{gamefunctions}}
+\subsubsection{\texorpdfstring{rec\+Reveal()}{recReveal()}}
+{\footnotesize\ttfamily def gamefunctions.\+rec\+Reveal (\begin{DoxyParamCaption}\item[{}]{grid,  }\item[{}]{rows,  }\item[{}]{cols }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@pre    Grid is a valid object of type Board, rows and cols is the location in the board to reveal
+    @post   will reveal all
+    @return returns true if the cell in question is a mine, false if it is not
+\end{DoxyVerb}
+ 
+
+Definition at line 11 of file gamefunctions.\+py.
+

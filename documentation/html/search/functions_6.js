@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['start_5fgame',['start_game',['../namespacesweeper___u_i.html#a6d328451ee39123c0cb2af67b6a79379',1,'sweeper_UI']]]
+  ['place_5fmines',['place_mines',['../namespacegamefunctions.html#acf46cabff90f0d1e06c4aadc3865292a',1,'gamefunctions']]],
+  ['place_5fsurface',['place_surface',['../namespacegamefunctions.html#a109b9daf1366f60cec625c3ff29fd7dd',1,'gamefunctions']]]
 ];

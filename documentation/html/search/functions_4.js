@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quit_5fgame',['quit_game',['../namespacesweeper___u_i.html#a60d3b69c6e596a8cc72c88a3fd159926',1,'sweeper_UI']]]
+  ['draw',['draw',['../classsweeper___u_i_1_1gui__button.html#ae168198450518f00782017759a8879bd',1,'sweeper_UI::gui_button']]]
 ];

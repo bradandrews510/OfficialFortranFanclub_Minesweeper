@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clicked',['clicked',['../classsweeper___u_i_1_1gui__button.html#af74950231e0ddbcb8582404a8320dee5',1,'sweeper_UI::gui_button']]]
+  ['adjacent',['adjacent',['../namespacegamefunctions.html#a0a55e81352e3e0790627bb267c2391ae',1,'gamefunctions']]]
 ];
