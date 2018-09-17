@@ -1,3 +1,6 @@
+"""@package docstring
+   Game Board... this file or the class needs to be renamed
+"""
 import pygame, sys, time, random
 from pygame.locals import *
 import random
@@ -111,7 +114,7 @@ def game_over(gameSurface):
 
         gameSurface.blit(MENU_SURF, MENU_RECT)
         MENU_SURF.fill(WHITE)
-        draw_text("Game Over", MENU_SURF, 200*.5, 100*.25)
+        create_text("Game Over", MENU_SURF, 200*.5, 100*.25)
 
         gameSurface.blit(QUIT_SURF, QUIT_RECT)
 
@@ -153,7 +156,7 @@ def place_surface(screen, x, y):
 
     return surfRect
 
-def draw_text(text, surface, x, y):
+def create_text(text, surface, x, y):
     """ @pre    none
         @post   creates text centered at the x and y position given relative to the surface and blits it on
         @return None
