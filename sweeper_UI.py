@@ -247,6 +247,9 @@ class minesweeper_gui:
 
                                     flags_button.text = "Flags remaining: " + str(flags)
                                     flags_button.draw(gameDisplay, 1)
+                elif event.type==pygame.KEYDOWN and event.type == K_LSHIFT:
+                #Cheat mode
+
                 if (game_win == False):
                     flagged_count = update_display(gameDisplay, gB, cell_list, flagged_count)
 
