@@ -142,6 +142,7 @@ class minesweeper_gui:
         @post encompasses entire game loop
         @return none
         """
+        cheat_mode=False
 
         pygame.init()
         pygame.font.init()
@@ -247,11 +248,14 @@ class minesweeper_gui:
 
                                     flags_button.text = "Flags remaining: " + str(flags)
                                     flags_button.draw(gameDisplay, 1)
-                elif event.type==pygame.KEYDOWN and event.type == K_LSHIFT:
+                elif event.type==pygame.KEYDOWN and event.key == 304:
                 #Cheat mode
-
+                    cheat_mode = not cheat_mode
                 if (game_win == False):
-                    flagged_count = update_display(gameDisplay, gB, cell_list, flagged_count)
+                    if not cheat_mode:
+                        flagged_count = update_display(gameDisplay, gB, cell_list, flagged_count)
+                    else:
+                        flagged_count = update_display_cheat(gameDisplay, gB, cell_list, flagged_count)
 
                 if(flagged_count == mines):
 
@@ -293,6 +297,18 @@ def update_display(display, gB, cell_list,flagged_count):
                     flagged_count += 1
             else:
                 display.blit(cell_image, (cell.x * cell_size, 40 + cell.y * cell_size))
+    return (flagged_count)
+
+def update_display_cheat(display, gB, cell_list,flagged_count):
+    """
+    @pre take display, game board, cell 2d array, and flagged count inputs
+    @post update each game cell displaying cheat info
+    @return flagged count for game win checking
+    """
+    flagged_count = 0
+    for row in range(gB.get_height()):
+        for cell in cell_list[row]:
+            display.blit(cell_contents[gB.board[cell.y][cell.x].get_cell_textRep()], (cell.x * cell_size, 40 + cell.y * cell_size))
     return (flagged_count)
 
 def start_game(rows,cols,mines):
