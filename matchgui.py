@@ -3,15 +3,13 @@ import tkinter as tk
 import random
 from random import shuffle
 from tkinter import messagebox
-from tkinter import*
-from tkinter import ttk
-
+from tkinter import *
 
 class matchgui:
     def __init__(self, parent):
         self.parent = parent
-        self.buttons = [[tk.Button(root, font=14, width=4, height=2, command=lambda row=row, column=column:
-        self.select(row, column) ) for column in range(4)] for row in range(2)]
+        self.buttons = [[tk.Button(root, fg="black", bg="SkyBlue", font=12, width=10, height=5, command=lambda row=row, column=column:
+        self.select(row, column)) for column in range(4)] for row in range(2)]
         for row in range(2):
             for column in range(4):
                 self.buttons[row][column].grid(row=row, column=column)
@@ -49,15 +47,15 @@ class matchgui:
         self.buttons[x2][y2].config(text='', state=tk.NORMAL)
 
 
-
 root = tk.Tk()
-matchgui(root)
+
 root.title("Matching game!")
 """photo = PhotoImage(file="apple.png")
 label1 = Label1(root,image=photo)
 label1.pack()"""
-"""label = tk.Label(root, text="Welcome to the matching game!")"""
-"""button = tk.Button(root, text="Start")"""
-"""label.grid(column=0,row=0)"""
-"""button.grid(column=1,row=0)"""
+matchgui(root)
+"""label = tk.Label(root, text="Welcome to the matching game!")
+button = tk.Button(root, text="Start")
+label.grid(column=0,row=0)
+button.grid(column=1,row=0)"""
 root.mainloop()
