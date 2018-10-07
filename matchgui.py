@@ -8,19 +8,19 @@ from tkinter import *
 class matchgui:
     def __init__(self, parent):
         self.parent = parent
-        self.buttons = [[tk.Button(root, fg="black", bg="SkyBlue", font=12, width=10, height=5, command=lambda row=row, column=column:
-        self.select(row, column)) for column in range(4)] for row in range(2)]
+        self.buttons = [[tk.Button(root, fg="black", bg="SkyBlue", font="50", width=10, height=5, command=lambda row=row, column=column:
+        self.select(row, column)) for column in range(5)] for row in range(2)]
         for row in range(2):
-            for column in range(4):
+            for column in range(5):
                 self.buttons[row][column].grid(row=row, column=column)
 
         self.state = False
         self.setupboard()
 
     def setupboard(self):
-        self.board = list('AABBCCDD')
+        self.board = list('XXYYZZAABB')
         random.shuffle(self.board)
-        self.board = [self.board[:4], self.board[4:8]]
+        self.board = [self.board[:5], self.board[5:10]]
         for row in self.buttons:
             for button in row:
                 button.config(text='', state=tk.NORMAL)
@@ -31,15 +31,17 @@ class matchgui:
         if not self.state:
             self.state = (row, column)
         else:
-            a,b = self.state
-            if self.board[row][column] == self.board[a][b]:
+            x,y = self.state
+            if self.board[row][column] == self.board[x][y]:
                 self.board[row][column] = ''
-                self.board[a][b] = ''
+                self.board[x][y] = ''
                 if not any(''.join(row) for row in self.board):
-                    messagebox.showinfo(title='Success!', message='You win! ')
-                    self.parent.after(300, self.setupboard)
+                    messagebox.showinfo(title='SUCCESS!', message='You win! You cam back to minesweeper ')
+                """else:
+                    messagebox.showinfo(title='FAIL!!', message='You lose! Game Over! ')"""
+
             else:
-                self.parent.after(300, self.cover, row, column, a, b)
+                self.parent.after(300, self.cover, row, column, x, y)
             self.state = False
 
     def cover(self, x1, y1, x2, y2):
@@ -49,13 +51,13 @@ class matchgui:
 
 root = tk.Tk()
 
-root.title("Matching game!")
+root.title("Welcome to the Matching game!")
 """photo = PhotoImage(file="apple.png")
 label1 = Label1(root,image=photo)
 label1.pack()"""
 matchgui(root)
-"""label = tk.Label(root, text="Welcome to the matching game!")
+"""label = tk.Label(root, text="Welcome to the matching game!")"""
 button = tk.Button(root, text="Start")
-label.grid(column=0,row=0)
-button.grid(column=1,row=0)"""
+"""label.grid(row=4,column=4)"""
+button.grid(row=2,column=2)
 root.mainloop()
