@@ -9,6 +9,10 @@ import math
 from Board import *
 from Cell import Cell
 from gamefunctions import *
+import random
+from matchgui import matchgui
+import tkinter as tk
+from tkinter import *
 #from mini_games.SimpleMiniGame import *
 
 
@@ -146,6 +150,7 @@ class minesweeper_gui:
         @return none
         """
         cheat_mode=False
+        num_mini_games=2
 
 
         pygame.init()
@@ -224,7 +229,20 @@ class minesweeper_gui:
 
                                         if(mine_hit):
                                             #TODO make several mini games
-                                            mini_game_win=simple_game(gameDisplay);
+                                            mini_game_select=random.randint(1, num_mini_games)
+                                            print(mini_game_select)
+                                            mini_game_select=2
+                                            if(mini_game_select == 1):
+                                                #simple game
+                                                mini_game_win=simple_game(gameDisplay);
+                                            elif(mini_game_select==2):
+                                                #matching game
+                                                matchingGame=matchgui()
+                                                mini_game_win=matchingGame.if_win
+                                                print(mini_game_win)
+                                            elif(mini_game_select==3):
+                                                #Tic tac toe
+                                                print("tic tac toe")
                                             if(mini_game_win):
                                                 #Won miniGame
                                                 mine_hit=False;
@@ -364,8 +382,8 @@ def simple_game(Surface):
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button==1:
                 mx, my = pygame.mouse.get_pos()
-                if mx <= 120:
+                if mx <= 120 and my <=60:
                     return True
-                else:
+                elif ms >120 and my<=60:
                     return False
         pygame.display.update()
