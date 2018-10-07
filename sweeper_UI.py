@@ -382,6 +382,6 @@ def simple_game(Surface):
                 mx, my = pygame.mouse.get_pos()
                 if mx <= 120 and my <=60:
                     return True
-                elif ms >120 and my<=60:
+                elif mx >120 and my<=60:
                     return False
         pygame.display.update()
