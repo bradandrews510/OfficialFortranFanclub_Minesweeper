@@ -8,6 +8,7 @@ import pygame
 class new_game:
 
     def __init__(self, rows, cols, mines):
+        print("FUCKL FUCK FUCK")
         self.m_rows = rows
         self.m_cols = cols
         self.m_mines = mines
